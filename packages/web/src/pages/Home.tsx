@@ -7,8 +7,7 @@ import { proofTxids } from '../lib/proof';
 import { useBchUsd } from '../lib/price';
 import { TEAM } from '../team';
 import { InkField } from '../components/InkField';
-import { HeroGate } from '../components/HeroGate';
-import { LiveBondStrip } from '../components/LiveBondStrip';
+import { InkRings } from '../components/InkRings';
 import { ContractScene } from '../components/ContractScene';
 import { PixelAvatar } from '../components/PixelAvatar';
 import { Reveal } from '../components/motion';
@@ -129,17 +128,16 @@ export function Home() {
       <div className="page-root">
         <header className="hero">
           <div className="gate-desk">
-            <HeroGate />
-            <LiveBondStrip />
+            <InkRings />
           </div>
           <div className="hero-content">
             <div className="wrap">
               <div className="hero-copy">
                 <p className="eyebrow">Bitcoin Cash · anti-spam deposits</p>
                 <h1>
-                  $5 to reach a maintainer.
+                  <span className="hl-price">$5</span> to reach a <em className="hl-serif">maintainer.</em>
                   <br />
-                  Refunded if you&apos;re human.
+                  <span className="hl-swipe">Refunded</span> if you&apos;re <em className="hl-serif">human.</em>
                 </h1>
               </div>
             </div>
@@ -167,8 +165,7 @@ export function Home() {
                 </a>
               </div>
               <div className="gate-mob">
-                <HeroGate />
-                <LiveBondStrip />
+                <InkRings />
               </div>
             </div>
           </div>

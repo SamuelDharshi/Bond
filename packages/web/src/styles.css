@@ -1766,202 +1766,44 @@ footer {
   max-width: none;
 }
 
-/* ---------- hero right column: the issue gate ---------- */
+/* ---------- hero right column: the big Bond mark ---------- */
 .gate-desk {
   position: absolute;
   right: clamp(16px, 4vw, 72px);
   top: 50%;
-  transform: translateY(-46%);
-  width: clamp(340px, 36vw, 500px);
+  transform: translateY(-50%);
   z-index: 1;
 }
 .gate-mob {
   display: none;
 }
-.gate {
-  position: relative;
-  width: 100%;
-  height: clamp(340px, 30vw, 440px);
-  perspective: 1100px;
-  overflow: visible;
-  --cx: 70%;
-  --dock: -307px;
-}
-.gate-stage {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transform: rotateX(14deg) rotateY(-16deg);
-  transition: transform 0.35s var(--ease);
-}
-.gate-box {
-  position: absolute;
-  left: var(--cx);
-  top: 50%;
-  width: 160px;
-  height: 160px;
-  margin: -80px 0 0 -80px;
-  display: grid;
-  place-items: center;
-  transform: translateZ(30px);
-}
-.gate-box img {
-  width: 160px;
+.ink-rings {
+  display: block;
+  width: clamp(280px, 30vw, 440px);
   height: auto;
-  max-width: none;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12));
+  aspect-ratio: 1;
+  animation:
+    mark-in 1.2s var(--ease) both,
+    mark-float 7s ease-in-out 1.2s infinite;
 }
-.gate-ring {
-  position: absolute;
-  inset: -22px;
-  border: 1.5px dashed rgba(10, 193, 142, 0.55);
-  border-radius: 50%;
-  animation: gate-spin 28s linear infinite;
-}
-@keyframes gate-spin {
+@keyframes mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.82) rotate(-8deg);
+  }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: none;
   }
 }
-.gate-lane {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-}
-.gate-card,
-.gate-coin {
-  position: absolute;
-  left: var(--cx);
-  will-change: transform, opacity;
-}
-.gate-card {
-  width: 213px;
-  padding: 11px 13px;
-  background: #fff;
-  border: 1px solid #dcdcdc;
-  border-radius: 12px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
-  opacity: 0;
-  transform: translate3d(-340px, -50%, 0);
-}
-.gate-card.static {
-  opacity: 1;
-  transform: translate3d(var(--dock), -50%, 0);
-}
-.gate-card-top {
-  display: flex;
-  justify-content: space-between;
-  font: 500 11px/1 var(--mono);
-  color: #666;
-}
-.gate-open {
-  color: #1a7f37;
-}
-.gate-title {
-  margin: 7px 0 8px;
-  font: 600 13px/1.25 var(--font-body, inherit);
-  color: #111;
-}
-.gate-meta {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-size: 11px;
-}
-.gate-chip {
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: #f1f1f1;
-  font-family: var(--mono);
-  color: #333;
-}
-.gate-bonded {
-  color: #1a7f37;
-  font-weight: 600;
-}
-.gate-stamp {
-  position: absolute;
-  right: 8px;
-  top: 7px;
-  padding: 2px 7px;
-  border: 2px solid;
-  border-radius: 6px;
-  font: 700 11px/1 var(--mono);
-  letter-spacing: 0.06em;
-  background: rgba(255, 255, 255, 0.92);
-  opacity: 0;
-}
-.gate-card.static .gate-stamp {
-  opacity: 1;
-  transform: rotate(-8deg);
-}
-.gate-stamp.ok {
-  color: #0a9d6e;
-  border-color: #0a9d6e;
-}
-.gate-stamp.bad {
-  color: #d23a3a;
-  border-color: #d23a3a;
-}
-.gate-coin {
-  width: 22px;
-  height: 22px;
-  margin-left: -11px;
-  border-radius: 50%;
-  opacity: 0;
-}
-.gate-pulse {
-  position: absolute;
-  left: var(--cx);
-  top: 50%;
-  width: 160px;
-  height: 160px;
-  border: 2px solid;
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-}
-.gate-coin.ok {
-  box-shadow: 0 0 16px rgba(10, 193, 142, 0.75);
-  background: radial-gradient(circle at 35% 30%, #5ff0c0, #0ac18e 60%, #078a65);
-}
-.gate-coin.bad {
-  box-shadow: 0 0 16px rgba(229, 72, 77, 0.7);
-  background: radial-gradient(circle at 35% 30%, #ff9a9a, #e5484d 60%, #a82a2f);
-}
-.gate-legend {
-  position: absolute;
-  right: 0;
-  bottom: -4px;
-  margin: 0;
-  font: 500 11px/1 var(--mono);
-  color: #555;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-.gate-legend .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-.gate-legend .dot.ok {
-  background: #0ac18e;
-}
-.gate-legend .dot.bad {
-  background: #e5484d;
-  margin-left: 8px;
-}
-.live-strip {
-  margin: 18px 0 0;
-  font: 500 12px/1.4 var(--mono);
-  color: #444;
-  text-align: right;
-}
-.live-strip strong {
-  color: #111;
+@keyframes mark-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 @media (max-width: 899px) {
   .gate-desk {
@@ -1969,40 +1811,66 @@ footer {
   }
   .gate-mob {
     display: block;
-    align-self: stretch;
-    width: 100%;
-    margin-top: 28px;
-    max-width: 100%;
-    overflow: hidden;
+    align-self: center;
+    margin-top: 24px;
   }
-  .gate-mob .gate {
-    height: 340px;
-    --cx: 76%;
-    --dock: -262px;
-  }
-  .gate-mob .gate-box {
-    width: 130px;
-    height: 130px;
-    margin: -65px 0 0 -65px;
-  }
-  .gate-mob .gate-box img {
-    width: 124px;
-  }
-  .gate-mob .gate-legend {
-    right: 12px;
-  }
-  .gate-mob .gate-card {
-    width: 184px;
-  }
-  .gate-mob .gate-stage {
-    transform: rotateX(10deg) rotateY(-10deg) scale(0.86);
-  }
-  .gate-mob .live-strip {
-    text-align: left;
+  .gate-mob .ink-rings {
+    width: min(240px, 62vw);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .gate-ring {
+  .ink-rings {
     animation: none;
+  }
+}
+
+/* ---------- hero headline: mixed sans + serif italic ---------- */
+.hero h1 {
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  font-size: clamp(34px, 4.1vw, 66px);
+}
+.hl-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em;
+  letter-spacing: -0.015em;
+}
+.hl-price {
+  background: linear-gradient(120deg, #0ac18e 0%, #1cc744 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.04em;
+}
+.hl-swipe {
+  background-image: linear-gradient(
+    transparent 64%,
+    rgba(10, 193, 142, 0.38) 64%,
+    rgba(10, 193, 142, 0.38) 92%,
+    transparent 92%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 0% 100%;
+  animation: hl-swipe 0.9s var(--ease) 2.2s forwards;
+}
+@keyframes hl-swipe {
+  to {
+    background-size: 100% 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hl-swipe {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}
+@media (max-width: 860px) {
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 54px);
   }
 }
