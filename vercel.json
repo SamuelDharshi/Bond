@@ -3,5 +3,6 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @bond/contracts run compile && pnpm --filter @bond/web build",
   "outputDirectory": "packages/web/dist",
-  "framework": null
+  "framework": null,
+  "rewrites": [{ "source": "/((?!assets/|brand/).*)", "destination": "/index.html" }]
 }

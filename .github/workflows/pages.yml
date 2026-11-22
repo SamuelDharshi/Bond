@@ -29,6 +29,8 @@ jobs:
           VITE_BLAZE_URL: ${{ vars.VITE_BLAZE_URL }}
           # Public demo key (test network only). Stored as a secret just to keep it out of git.
           VITE_DEMO_MAINTAINER_WIF: ${{ secrets.VITE_DEMO_MAINTAINER_WIF }}
+      - name: Single-page-app fallback (clean URLs)
+        run: cp packages/web/dist/index.html packages/web/dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: packages/web/dist

@@ -1,3 +1,4 @@
+import { isHomePath } from './router';
 export const INTRO_SEEN = 'bond-intro-seen';
 
 /**
@@ -7,8 +8,7 @@ export const INTRO_SEEN = 'bond-intro-seen';
  * page except the landing page.
  */
 export function prepareIntro(): void {
-  const h = location.hash;
-  if (!(h === '' || h === '#' || h === '#/')) return;
+  if (!isHomePath()) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.dataset.intro = 'offset';
 }

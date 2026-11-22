@@ -1,3 +1,5 @@
+import { go } from './router';
+
 /** Scroll to a section of the landing page, navigating there first when on another page. */
 export function goSection(id: string, onHome: boolean): void {
   const scroll = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -5,6 +7,6 @@ export function goSection(id: string, onHome: boolean): void {
     scroll();
     return;
   }
-  location.hash = '#/';
+  go('/');
   setTimeout(scroll, 500);
 }
