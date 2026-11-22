@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { isTimelockNotReached, notYetMessage, parseIssueUrl, type IssueRef } from '@bond/core';
 import { buildReclaimTx, type DiscoveredBond } from '@bond/contracts';
-import { DEMO_ISSUE_URL } from '../lib/config';
 import { useIssue } from '../lib/useIssue';
 import { getChain, humanError } from '../lib/chain';
 import { href } from '../lib/router';
@@ -10,7 +9,7 @@ import { ErrorBox, IssueInput, Spinner, StatusPill } from '../components/ui';
 import { TxFollow, TxProgress } from '../components/TxProgress';
 
 export function StatusPage({ params }: { params: URLSearchParams }) {
-  const initial = params.get('issue') || DEMO_ISSUE_URL;
+  const initial = params.get('issue') ?? '';
   const [ref, setRef] = useState<IssueRef | undefined>(() => {
     try {
       return parseIssueUrl(initial);

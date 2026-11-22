@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import { SignatureTemplate } from 'cashscript';
 import { keyFromWif, parseIssueUrl, type IssueRef } from '@bond/core';
 import { buildForfeitTx, buildRefundTx, type DiscoveredBond } from '@bond/contracts';
-import { DEMO_ISSUE_URL } from '../lib/config';
 import { useIssue } from '../lib/useIssue';
 import { getChain, humanError } from '../lib/chain';
 import { href } from '../lib/router';
@@ -13,7 +12,7 @@ import { TxFollow, TxProgress } from '../components/TxProgress';
 const DEMO_WIF = import.meta.env.VITE_DEMO_MAINTAINER_WIF;
 
 export function MaintainerPage({ params }: { params: URLSearchParams }) {
-  const initial = params.get('issue') || DEMO_ISSUE_URL;
+  const initial = params.get('issue') ?? '';
   const [ref, setRef] = useState<IssueRef | undefined>(() => {
     try {
       return parseIssueUrl(initial);

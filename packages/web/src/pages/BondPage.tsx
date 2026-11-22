@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { WizardConnectQRDialog } from '@wizardconnect/react';
 import { getNetwork, lockMinutes, parseIssueUrl, type IssueRef } from '@bond/core';
-import { DEMO_ISSUE_URL } from '../lib/config';
 import { useIssue } from '../lib/useIssue';
 import { useWallet } from '../lib/walletContext';
 import { fundWithWizardConnect, readWallet, WalletError, type FundResult, type WalletView } from '../lib/wallet';
@@ -38,7 +37,7 @@ function Stepper({ step }: { step: number }) {
 }
 
 export function BondPage({ params }: { params: URLSearchParams }) {
-  const initial = params.get('issue') || DEMO_ISSUE_URL;
+  const initial = params.get('issue') ?? '';
   const [ref, setRef] = useState<IssueRef | undefined>(() => safeParse(initial));
   const [issueUrl, setIssueUrl] = useState(initial);
   const issue = useIssue(ref);

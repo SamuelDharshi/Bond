@@ -21,7 +21,6 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: [
-        { find: /^@demo-config$/, replacement: resolve(ROOT, 'demo-repo/.github/bond.json') },
         { find: /^@proof-txids$/, replacement: resolve(ROOT, 'docs/proof/demo-txids.json') },
         { find: /^@bond-source(?=\?raw$)/, replacement: resolve(ROOT, 'packages/contracts/Bond.cash') },
       ],

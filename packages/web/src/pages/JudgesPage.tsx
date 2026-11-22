@@ -1,5 +1,4 @@
 import { LIVE_NETWORK, getNetwork, getNetworkConfig } from '@bond/core';
-import { DEMO_ISSUE_URL } from '../lib/config';
 import { href } from '../lib/router';
 import { proofTxids } from '../lib/proof';
 import { Amount } from '../components/Amount';
@@ -22,23 +21,23 @@ export function JudgesPage() {
     },
     {
       icon: <Icon.Lock />,
-      title: 'Bond the sample issue',
+      title: 'Bond an issue',
       text: 'Scan the QR, approve, and watch the transaction appear.',
-      to: href('/bond', { issue: DEMO_ISSUE_URL }),
+      to: href('/bond'),
       cta: 'Bond it',
     },
     {
       icon: <Icon.Key />,
       title: 'Act as the maintainer',
       text: 'Press Refund and the deposit goes back to your wallet.',
-      to: href('/maintainer', { issue: DEMO_ISSUE_URL }),
+      to: href('/maintainer'),
       cta: 'Open console',
     },
     {
       icon: <Icon.Check />,
       title: 'Check the proof',
       text: 'Every step links to the explorer.',
-      to: href('/status', { issue: DEMO_ISSUE_URL }),
+      to: href('/status'),
       cta: 'See status',
     },
   ];

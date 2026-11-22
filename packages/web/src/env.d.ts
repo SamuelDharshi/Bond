@@ -1,8 +1,4 @@
 /// <reference types="vite/client" />
-declare module '@demo-config' {
-  const value: unknown;
-  export default value;
-}
 declare module '@proof-txids' {
   const value: unknown;
   export default value;
