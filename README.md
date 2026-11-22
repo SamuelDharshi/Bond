@@ -456,7 +456,7 @@ Bond.cash ─► packages/contracts   the covenant, SDK, discovery
 
 ## Limitations (honest list)
 
-- **A bond proves money, not identity.** A well-funded spammer can still pay. Bond raises the cost of slop; it doesn't detect it.
+- **Bond puts a price on spam instead of trying to detect it.** A spammer who sends a hundred fake reports loses a hundred deposits to charity, while a genuine contributor loses nothing. Each repo sets the deposit size in `bond.json`, so a maintainer who gets more spam can raise it.
 - **Maintainer griefing is possible.** The bot key (or a malicious maintainer) can forfeit a genuine bond to charity. It can never take the money, but the contributor still loses it.
 - **GitHub scheduled runs can lag** by minutes to hours, and label events depend on Actions being enabled. The keyless reclaim button in the web app works regardless.
 - **Changing `bond.json`** (maintainer key, charity, timeout, fee cap) changes the derived address, so the Action stops finding older bonds. They stay safe and reclaimable by their contributor via `reclaim()` with the old parameters.
