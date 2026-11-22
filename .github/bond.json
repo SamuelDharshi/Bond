@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "network": "mainnet",
+  "maintainerPkh": "089da196f207f6bbf31eb6144d074595ffc9ddb5",
+  "charityAddress": "bitcoincash:qz5cymmtgzxttwhqmf3a0zh0q47ng8897czg0tadea",
+  "minValueSats": 50000,
+  "reclaimBlocks": 144,
+  "maxFeeSats": 1500,
+  "labels": {
+    "bonded": "bonded ✓",
+    "valid": "valid",
+    "slop": "slop"
+  }
+}
