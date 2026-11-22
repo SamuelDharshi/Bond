@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "network": "chipnet",
+  "maintainerPkh": "0d7628ca241125b162b02c3136946295a655569b",
+  "charityAddress": "bchtest:qq9fdl906aswh7d29kw3pf5pvp5f67rq6g0zscln7v",
+  "registryAddress": "bchtest:qqxhv2x2ysgjtvtzkqkrzd55v226v42knvu5fp287m",
+  "minValueSats": 50000,
+  "reclaimBlocks": 1,
+  "maxFeeSats": 1500,
+  "labels": {
+    "bonded": "bonded ✓",
+    "valid": "valid",
+    "slop": "slop"
+  }
+}

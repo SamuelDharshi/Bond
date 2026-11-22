@@ -1,0 +1,35 @@
+name: Bond
+on:
+  issues:
+    types: [opened, edited, labeled, reopened]
+  pull_request_target:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+concurrency:
+  # One run per issue at a time (scheduled sweeps share one group) so a bond is never double-spent.
+  group: bond-${{ github.event.issue.number || github.event.pull_request.number || 'sweep' }}
+  cancel-in-progress: false
+
+jobs:
+  bond:
+    runs-on: ubuntu-latest
+    # Ignore the bot's own comments.
+    if: github.event_name != 'issue_comment' || github.event.comment.user.type != 'Bot'
+    steps:
+      - uses: BOND_ACTION_OWNER/bond/packages/action@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          maintainer-wif: ${{ secrets.BOND_MAINTAINER_WIF }}
+          config-path: .github/bond.json
+          # Demo only: leave timed-out bonds for judges to return with the web app's permissionless button.
+          auto-reclaim: 'false'
