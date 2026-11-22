@@ -21,7 +21,8 @@
     "demo:repo": "tsx scripts/demo-repo.ts",
     "check:network": "tsx scripts/check-network-strings.ts",
     "demo:config": "tsx scripts/demo-config.ts",
-    "reclaim": "tsx scripts/reclaim.ts"
+    "reclaim": "tsx scripts/reclaim.ts",
+    "mainnet:proof": "tsx scripts/mainnet-proof.ts"
   },
   "devDependencies": {
     "@actions/github": "^9.1.1",

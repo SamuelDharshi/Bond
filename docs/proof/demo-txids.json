@@ -114,5 +114,31 @@
       "network": "chipnet",
       "at": "2026-11-21T10:45:55.048Z"
     }
+  ],
+  "mainnet": [
+    {
+      "label": "fund: bond #1 (refund demo)",
+      "txid": "2e3bca46f1db0ca122f4a972f40be73901e27edb266e13f37737a98745c55c57",
+      "network": "mainnet",
+      "at": "2026-11-22T12:22:02.998Z"
+    },
+    {
+      "label": "refund: bond #1",
+      "txid": "e058948aa2918887ab8c9268807503f289192ecd609f8ffdeff6f84847a0ed82",
+      "network": "mainnet",
+      "at": "2026-11-22T12:22:03.308Z"
+    },
+    {
+      "label": "fund: bond #2 (forfeit demo)",
+      "txid": "8ef75ee8f28194bec56b1a36bb29b532a34bcf0647665916bc753e28c4d765e8",
+      "network": "mainnet",
+      "at": "2026-11-22T12:22:05.712Z"
+    },
+    {
+      "label": "forfeit: bond #2",
+      "txid": "5d91af589433be3d2293c250078e3d9ac110b559195e5a00b6fe5c4b68045897",
+      "network": "mainnet",
+      "at": "2026-11-22T12:22:06.009Z"
+    }
   ]
 }
