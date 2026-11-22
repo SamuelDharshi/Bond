@@ -92,17 +92,71 @@ export function HeroGate() {
       );
       stamp.animate(
         [
-          { transform: 'rotate(-8deg) scale(1.9)', opacity: 0 },
+          { transform: 'rotate(-14deg) scale(2.8)', opacity: 0 },
+          { transform: 'rotate(-6deg) scale(0.9)', opacity: 1, offset: 0.6 },
           { transform: 'rotate(-8deg) scale(1)', opacity: 1 },
         ],
-        { duration: 320, delay: IN, easing: EASE, fill: 'both' },
+        { duration: 360, delay: IN, easing: EASE, fill: 'both' },
       );
+
+      // the verdict lands: the rings glow, and a shockwave leaves the contract in the verdict's colour
+      const tint = issue.real ? '10, 193, 142' : '229, 72, 77';
+      const mark = rootEl.querySelector<HTMLElement>('.gate-box img');
+      mark?.animate(
+        [
+          { transform: 'scale(1)', filter: 'drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12))' },
+          { transform: 'scale(1.12)', filter: `drop-shadow(0 0 26px rgba(${tint}, 0.95))`, offset: 0.35 },
+          { transform: 'scale(1)', filter: 'drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12))' },
+        ],
+        { duration: 650, delay: IN, easing: 'ease-out' },
+      );
+      const pulse = el('div', 'gate-pulse');
+      pulse.style.borderColor = `rgb(${tint})`;
+      laneEl.append(pulse);
+      pulse
+        .animate(
+          [
+            { transform: 'translate(-50%, -50%) scale(0.5)', opacity: 0.85 },
+            { transform: 'translate(-50%, -50%) scale(2.6)', opacity: 0 },
+          ],
+          { duration: 950, delay: IN, easing: 'ease-out', fill: 'both' },
+        )
+        .finished.then(
+          () => pulse.remove(),
+          () => {
+            /* cancelled together with its node */
+          },
+        );
 
       // the coin leaves the gate: green back to the contributor (left), red to the charity (right)
       const coin = el('div', issue.real ? 'gate-coin ok' : 'gate-coin bad');
       coin.style.top = `calc(50% + ${y}px)`;
       laneEl.append(coin);
       const dir = issue.real ? -1 : 1;
+      for (const [lag, alpha, size] of [
+        [70, 0.5, 0.8],
+        [140, 0.28, 0.6],
+      ] as const) {
+        const ghost = el('div', issue.real ? 'gate-coin ok' : 'gate-coin bad');
+        ghost.style.top = `calc(50% + ${y}px)`;
+        laneEl.append(ghost);
+        ghost
+          .animate(
+            [
+              { transform: 'translate3d(0, -50%, 0) scale(0.3)', opacity: 0 },
+              { transform: `translate3d(0, -50%, 0) scale(${size})`, opacity: alpha, offset: 0.15 },
+              { transform: `translate3d(${dir * 300}px, -50%, 0) scale(${size})`, opacity: alpha, offset: 0.85 },
+              { transform: `translate3d(${dir * 330}px, -50%, 0) scale(0.4)`, opacity: 0 },
+            ],
+            { duration: 1300, delay: IN + 260 + lag, easing: 'ease-in-out', fill: 'both' },
+          )
+          .finished.then(
+            () => ghost.remove(),
+            () => {
+              /* cancelled together with its node */
+            },
+          );
+      }
       coin.animate(
         [
           { transform: 'translate3d(0, -50%, 0) scale(0.4)', opacity: 0 },

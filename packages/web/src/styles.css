@@ -1910,10 +1910,23 @@ footer {
   border-radius: 50%;
   opacity: 0;
 }
+.gate-pulse {
+  position: absolute;
+  left: var(--cx);
+  top: 50%;
+  width: 160px;
+  height: 160px;
+  border: 2px solid;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
 .gate-coin.ok {
+  box-shadow: 0 0 16px rgba(10, 193, 142, 0.75);
   background: radial-gradient(circle at 35% 30%, #5ff0c0, #0ac18e 60%, #078a65);
 }
 .gate-coin.bad {
+  box-shadow: 0 0 16px rgba(229, 72, 77, 0.7);
   background: radial-gradient(circle at 35% 30%, #ff9a9a, #e5484d 60%, #a82a2f);
 }
 .gate-legend {
