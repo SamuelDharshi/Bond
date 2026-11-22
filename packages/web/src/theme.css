@@ -1,0 +1,24 @@
+/* Bond design tokens: the single source of truth for colour, type, radius and motion. */
+:root {
+  /* grain + ink */
+  --grain-opacity: 0.22;
+  --ink: #111111;
+  --bch-green: #0ac18e;
+  --bg: #ebebeb;
+  --panel: #ffffff;
+  --dark: #0b0b0b;
+  --muted: #555555;
+  --faint: #666666;
+  --rule: #d4d4d4;
+  --rule-dark: #242424;
+  --green: #1cc744;
+  --green-text: #0e7a2c;
+  --red: #ff5126;
+  --red-text: #b8340f;
+  --amber: #8a6508;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --display: 'Space Grotesk', 'Inter', sans-serif;
+  --mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --banner-h: 0px;
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+}
