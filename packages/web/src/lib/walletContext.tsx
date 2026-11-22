@@ -20,7 +20,7 @@ const Ctx = createContext<WalletCtx | null>(null);
 export function WalletProvider({ children }: { children: ReactNode }) {
   const wc = useWizardConnect({
     dappName: 'Bond',
-    dappIcon: `${location.origin}${import.meta.env.BASE_URL}icon.svg`,
+    dappIcon: `${location.origin}${import.meta.env.BASE_URL}brand/bond-icon.svg`,
     relayUrls: RELAYS,
     sessionKey: 'bond-wizardconnect-session',
   });

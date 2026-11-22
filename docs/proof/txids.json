@@ -2,117 +2,117 @@
   "e2e run (chipnet)": [
     {
       "label": "fund: bond for reclaim test (#4)",
-      "txid": "2f02038d38bf4e2b878b0cd0321713f23c753f1e8431a0d4c3c9bae660abb870",
+      "txid": "087539b2f79abf66dbda913af25814e83c357af837bef8776418b1681748e3f7",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:43.579Z"
+      "at": "2026-11-22T13:30:51.526Z"
     },
     {
       "label": "fund: bond #1",
-      "txid": "a71af005fea7f73c0e669e0d76f275c4b4d8ccc761e743ae46af47a7c441f850",
+      "txid": "569d4b5a1b9fba973af3aa2c45a2a84314b1d14a2e70c27c9b7569873dc2f8c4",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:46.651Z"
+      "at": "2026-11-22T13:30:52.333Z"
     },
     {
       "label": "refund #1",
-      "txid": "30e614e0217ee2c846107639f010dd80273f1bf7c2ad41e1f30ab8bf818e58b2",
+      "txid": "8ee75266bb87c20963360c3f169cbfbb7ca9ee160167d94d1eee7a415190c570",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:47.157Z"
+      "at": "2026-11-22T13:30:52.942Z"
     },
     {
       "label": "fund: bond #2",
-      "txid": "e54830a4c7ddcfe0a890d172160f678b76d76309d7c3e8dbf49771b785eee5d6",
+      "txid": "98dbc33e40226226d3856912911809594223e075b6583f222296d9d3c7eff56b",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:48.179Z"
+      "at": "2026-11-22T13:30:53.931Z"
     },
     {
       "label": "forfeit #2 -> charity",
-      "txid": "dd1b570bbb9efb6ee349bcd1c05240a519f8f3b4010f321349c8cdf6f2339623",
+      "txid": "d8db178c570574fe6c6dfaa59038c20bcd997851c8a63a53d5941c064a6cae5d",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:48.421Z"
+      "at": "2026-11-22T13:30:54.186Z"
     },
     {
       "label": "fund: bond #10 (target of negative tests)",
-      "txid": "f733ebdc35bba0560256d8009f014adc5e655650259992102e2080600a19e642",
+      "txid": "2d648d4647affa8de91eb116f874964da754ea2a7b68ea52d5e3a46a485b80c7",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:51.747Z"
+      "at": "2026-11-22T13:30:57.549Z"
     },
     {
       "label": "REJECTED refund to attacker",
       "note": "the transaction was rejected by network rules.\n\nmandatory-script-verify-flag-failed (Scrip",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:52.113Z"
+      "at": "2026-11-22T13:30:57.980Z"
     },
     {
       "label": "REJECTED forfeit to maintainer",
       "note": "the transaction was rejected by network rules.\n\nmandatory-script-verify-flag-failed (Scrip",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:52.464Z"
+      "at": "2026-11-22T13:30:58.290Z"
     },
     {
       "label": "fund: bond #11 (second bond for test 8)",
-      "txid": "7dbb284b0fef1bfffb29d42836bfa192a8eb602dbab0b5540828ed99221b7291",
+      "txid": "0b1fd4d8b90ee7b135274c8189f4be8d536174edb9d6bb328737e3a206c150e4",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:55.509Z"
+      "at": "2026-11-22T13:31:01.265Z"
     },
     {
       "label": "REJECTED two bonds -> one output",
       "note": "the transaction was rejected by network rules.\n\nmandatory-script-verify-flag-failed (The s",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:55.889Z"
+      "at": "2026-11-22T13:31:01.682Z"
     },
     {
       "label": "REJECTED fee > maxFee",
       "note": "the transaction was rejected by network rules.\n\nmandatory-script-verify-flag-failed (Scrip",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:56.193Z"
+      "at": "2026-11-22T13:31:01.989Z"
     },
     {
       "label": "REJECTED reclaim before timeout",
       "note": "the transaction was rejected by network rules.\n\nnon-BIP68-final (code 64)\n",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:56.786Z"
+      "at": "2026-11-22T13:31:02.482Z"
     },
     {
       "label": "REJECTED reclaim with sequence 0",
       "note": "the transaction was rejected by network rules.\n\nnon-mandatory-script-verify-flag (Locktime",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:57.102Z"
+      "at": "2026-11-22T13:31:02.775Z"
     },
     {
       "label": "REJECTED refund signed by non-maintainer",
       "note": "the transaction was rejected by network rules.\n\nmandatory-script-verify-flag-failed (Scrip",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:57.376Z"
+      "at": "2026-11-22T13:31:03.065Z"
     },
     {
       "label": "fund: bond #12 with attacker maintainerPkh",
-      "txid": "9a8174f1b66a472ccff8a9b5a1d7ec7271940876c0894de35970a1118ce5be9d",
+      "txid": "fd01e9e1f26c534ac5adf0f21434e2a1c6687fa4b05d2158c96e67006843047f",
       "network": "chipnet",
-      "at": "2026-11-21T10:35:58.154Z"
+      "at": "2026-11-22T13:31:03.930Z"
     },
     {
       "label": "reclaim #4 (permissionless, no key)",
-      "txid": "f7e74c4d1a8ea5ced5ea49451f993607a4e85c393c8b25833cfe4d0b00f77bf9",
+      "txid": "532c2169d77590ea2de572ff7a4342733631f8e003c7e16ca1d55ea5ac74c2e4",
       "network": "chipnet",
-      "at": "2026-11-21T10:45:52.482Z"
+      "at": "2026-11-22T13:37:55.675Z"
     },
     {
-      "label": "cleanup: refund bond-e2e/run-mwq9v8do#10",
-      "txid": "f81e3736e7338e734db5b7986c88236c06305a07c682623e9c2e075010550a2c",
+      "label": "cleanup: refund bond-e2e/run-mwrvkcn0#10",
+      "txid": "350ade9c88c085b038e2b012bdd43c92b3b61ab7c68f7781215f5b30a4257b33",
       "network": "chipnet",
-      "at": "2026-11-21T10:45:54.005Z"
+      "at": "2026-11-22T13:37:57.296Z"
     },
     {
-      "label": "cleanup: refund bond-e2e/run-mwq9v8do#11",
-      "txid": "2c9c8225e86c656bbd2a3e212223721381a9fa8dba4d24460bdbd7c1360dad3e",
+      "label": "cleanup: refund bond-e2e/run-mwrvkcn0#11",
+      "txid": "a8719671b1d18063819608af47706bdd595efd9bee768d9a4ad04412b146e8bb",
       "network": "chipnet",
-      "at": "2026-11-21T10:45:54.545Z"
+      "at": "2026-11-22T13:37:57.819Z"
     },
     {
-      "label": "cleanup: refund bond-e2e/run-mwq9v8do#12",
-      "txid": "ed9ddf64ab47a7fe1153748e6a835ce62756258d8ea79e2ec79e17fbbd097f8c",
+      "label": "cleanup: refund bond-e2e/run-mwrvkcn0#12",
+      "txid": "493041c55c4d4e3fac075b315937ff722785b3f6cb0c22775b9aa034d6cea3d7",
       "network": "chipnet",
-      "at": "2026-11-21T10:45:55.048Z"
+      "at": "2026-11-22T13:37:58.332Z"
     }
   ],
   "mainnet": [

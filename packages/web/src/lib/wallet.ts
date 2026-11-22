@@ -11,6 +11,7 @@ import { placeholderP2PKHUnlocker, type SpendableUtxo } from 'cashscript';
 import { binToHex, getNetwork, hash160, pkhToAddress, type BondConfig, type IssueRef } from '@bond/core';
 import { buildFundingTx, InsufficientFundsError, type DerivedBond } from '@bond/contracts';
 import { getChain } from './chain';
+import { toRelayJson } from './relayJson';
 
 const PATHS = [
   { name: 'receive', child: 0, scan: 20 },
@@ -64,20 +65,6 @@ export async function readWallet(manager: DappConnectionManager): Promise<Wallet
   }
   if (!first) throw new WalletError('Could not derive the wallet receive address.', 'other');
   return { ...first, utxos, balance: utxos.reduce((s, u) => s + u.satoshis, 0n) };
-}
-
-/**
- * The relay sends JSON, which cannot carry BigInt or Uint8Array. WizardConnect's format is
- * `<bigint: 500n>` and `<Uint8Array: 0x...>` strings, which wallets parse back (see @wizardconnect/core serialize).
- */
-function toRelayJson(value: unknown): unknown {
-  if (typeof value === 'bigint') return `<bigint: ${value}n>`;
-  if (value instanceof Uint8Array) return `<Uint8Array: 0x${binToHex(value)}>`;
-  if (Array.isArray(value)) return value.map(toRelayJson);
-  if (value && typeof value === 'object') {
-    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, toRelayJson(v)]));
-  }
-  return value;
 }
 
 export interface FundResult {

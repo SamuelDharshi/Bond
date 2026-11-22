@@ -417,7 +417,7 @@ pnpm faucet                # chipnet coins for the contributor (captcha: you typ
 pnpm balance               # real balances from Electrum
 pnpm build                 # compile contract, typecheck all, bundle Action, build web
 pnpm test:unit             # pure functions only (codec, subjectHash, config)
-pnpm e2e                   # REAL chipnet: 5 positive + 7 negative cases (needs ~400k sats)
+pnpm e2e                   # REAL chipnet: 5 positive + 7 negative cases + a simulated WizardConnect wallet (needs ~400k sats)
 pnpm --filter @bond/web dev
 pnpm check:network         # proves no network strings exist outside packages/core/src/network.ts
 ```
