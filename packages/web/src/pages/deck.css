@@ -72,7 +72,7 @@
   color: #555 !important;
   margin: 0 !important;
 }
-.deck-eyebrow .sq {
+.deck-eyebrow .dk-sq {
   width: 9px;
   height: 9px;
   background: #1cc744;
@@ -118,26 +118,26 @@
   border-radius: 20px;
   padding: 28px;
 }
-.bar-row {
+.dk-bar-row {
   margin-bottom: 20px;
   font: 500 13px/1 var(--mono);
   color: #444;
 }
-.bar-track {
+.dk-bar-track {
   margin-top: 9px;
   height: 22px;
   border-radius: 999px;
   background: #efefef;
   overflow: hidden;
 }
-.bar {
+.dk-bar {
   height: 100%;
   border-radius: 999px;
 }
-.bar.bad {
+.dk-bar.bad {
   background: #e5484d;
 }
-.bar.ink {
+.dk-bar.dark {
   background: #0b0b0b;
 }
 .deck-grid {
@@ -157,7 +157,7 @@
   margin: 0;
   color: #444;
 }
-.deck-card .n {
+.deck-card .dk-n {
   font: 500 12px/1 var(--mono);
   color: #0a9d6e;
 }
@@ -191,10 +191,10 @@
   margin-right: 8px;
   color: #0b0b0b;
 }
-.flow-out.path.ok {
+.flow-out.dk-path.ok {
   border-color: rgba(10, 193, 142, 0.6);
 }
-.flow-out.path.bad {
+.flow-out.dk-path.bad {
   border-color: rgba(229, 72, 77, 0.6);
 }
 .flow-arrow {
@@ -220,7 +220,7 @@
   gap: 18px;
   margin-top: 56px;
 }
-.deck-steps .line {
+.deck-steps .dk-line {
   position: absolute;
   left: 4%;
   right: 4%;
@@ -230,10 +230,10 @@
   transform-origin: 0 50%;
   border-radius: 3px;
 }
-.deck-steps .step {
+.deck-steps .dk-step {
   position: relative;
 }
-.deck-steps .dot {
+.deck-steps .dk-dot {
   display: grid;
   place-items: center;
   width: 40px;
@@ -245,7 +245,7 @@
   margin-bottom: 14px;
   position: relative;
 }
-.deck-steps .step p {
+.deck-steps .dk-step p {
   font-size: clamp(14px, 1.25vw, 18px);
 }
 .deck-list {
@@ -253,7 +253,7 @@
   display: grid;
   gap: 12px;
 }
-.deck-list .row {
+.deck-list .dk-row {
   display: grid;
   grid-template-columns: 90px 1fr;
   gap: 16px;
@@ -264,7 +264,7 @@
   border-radius: 14px;
   font-size: clamp(15px, 1.5vw, 21px);
 }
-.deck-list .row b {
+.deck-list .dk-row b {
   font: 600 13px/1 var(--mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -325,11 +325,11 @@
   opacity: 0.3;
   cursor: default;
 }
-.deck-bar .dots {
+.deck-bar .dk-dots {
   display: flex;
   gap: 8px;
 }
-.deck-bar .dots button {
+.deck-bar .dk-dots button {
   min-width: 0;
   width: 10px;
   height: 10px;
@@ -340,11 +340,11 @@
     background 0.3s;
   border-radius: 999px;
 }
-.deck-bar .dots button.on {
+.deck-bar .dk-dots button.on {
   width: 26px;
   background: #0b0b0b;
 }
-.deck-bar .count {
+.deck-bar .dk-count {
   font: 500 12px/1 var(--mono);
   color: #555;
 }
@@ -370,14 +370,14 @@
   .flow-arrow {
     display: none;
   }
-  .deck-steps .line {
+  .deck-steps .dk-line {
     display: none;
   }
   .deck-end {
     flex-direction: column;
     align-items: flex-start;
   }
-  .deck-list .row {
+  .deck-list .dk-row {
     grid-template-columns: 1fr;
     gap: 6px;
   }

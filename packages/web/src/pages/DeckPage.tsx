@@ -24,7 +24,7 @@ function Rise({ children, i = 0, className }: { children: ReactNode; i?: number;
 
 const Eyebrow = ({ children }: { children: ReactNode }) => (
   <p className="deck-eyebrow">
-    <span className="sq" />
+    <span className="dk-sq" />
     {children}
   </p>
 );
@@ -84,16 +84,16 @@ function Story() {
         </Rise>
       </div>
       <div className="deck-visual">
-        <div className="bars">
+        <div className="dk-bars">
           {[
             { label: 'Cost to send slop', w: '4%', tone: 'bad' },
-            { label: 'Cost to read it', w: '100%', tone: 'ink' },
+            { label: 'Cost to read it', w: '100%', tone: 'dark' },
           ].map((b, i) => (
-            <div key={b.label} className="bar-row">
+            <div key={b.label} className="dk-bar-row">
               <span>{b.label}</span>
-              <div className="bar-track">
+              <div className="dk-bar-track">
                 <motion.div
-                  className={`bar ${b.tone}`}
+                  className={`dk-bar ${b.tone}`}
                   initial={reduce ? { width: b.w } : { width: 0 }}
                   animate={{ width: b.w }}
                   transition={{ duration: 1.3, delay: 0.5 + i * 0.35, ease: EASE }}
@@ -134,7 +134,7 @@ function Benefits() {
       <div className="deck-grid">
         {BENEFITS.map(([t, d], i) => (
           <Rise key={t} i={i + 1} className="deck-card">
-            <span className="n">[ {String(i + 1).padStart(2, '0')} ]</span>
+            <span className="dk-n">[ {String(i + 1).padStart(2, '0')} ]</span>
             <h3>{t}</h3>
             <p>{d}</p>
           </Rise>
@@ -190,7 +190,7 @@ function BchUsage() {
           {paths.map(([a, b, tone], i) => (
             <motion.div
               key={a}
-              className={`flow-out path ${tone}`}
+              className={`flow-out dk-path ${tone}`}
               initial={reduce ? false : { opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.3 + i * 0.15, duration: 0.6, ease: EASE }}
@@ -226,15 +226,15 @@ function How() {
       </Rise>
       <div className="deck-steps">
         <motion.div
-          className="line"
+          className="dk-line"
           initial={reduce ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 2.2, delay: 0.5, ease: 'easeInOut' }}
         />
         {steps.map(([t, d], i) => (
-          <Rise key={t} i={i + 1} className="step">
+          <Rise key={t} i={i + 1} className="dk-step">
             <motion.span
-              className="dot"
+              className="dk-dot"
               initial={reduce ? false : { scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5 + i * 0.6, type: 'spring', stiffness: 300, damping: 14 }}
@@ -267,7 +267,7 @@ function Vision() {
       </Rise>
       <div className="deck-list">
         {items.map(([t, d], i) => (
-          <Rise key={t} i={i + 1} className="row">
+          <Rise key={t} i={i + 1} className="dk-row">
             <b>{t}</b>
             <span>{d}</span>
           </Rise>
@@ -392,7 +392,7 @@ export function DeckPage() {
         <button type="button" onClick={() => go(i - 1)} disabled={i === 0} aria-label="Previous slide">
           ←
         </button>
-        <div className="dots">
+        <div className="dk-dots">
           {SLIDES.map((s, n) => (
             <button
               key={s.name}
@@ -404,7 +404,7 @@ export function DeckPage() {
             />
           ))}
         </div>
-        <span className="count">
+        <span className="dk-count">
           {i + 1} / {SLIDES.length}
         </span>
         <button type="button" onClick={() => go(i + 1)} disabled={i === SLIDES.length - 1} aria-label="Next slide">
