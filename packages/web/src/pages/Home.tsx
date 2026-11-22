@@ -137,7 +137,7 @@ export function Home() {
                 <h1>
                   <span className="hl-price">$5</span> to reach a <em className="hl-serif">maintainer.</em>
                   <br />
-                  <span className="hl-swipe">Refunded</span> if you&apos;re <em className="hl-serif hl-nice">nice.</em>
+                  <span className="hl-swipe">Refunded</span> if you&apos;re <em className="hl-serif hl-nice">human.</em>
                 </h1>
               </div>
             </div>
