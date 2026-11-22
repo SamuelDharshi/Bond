@@ -1,0 +1,44 @@
+pragma cashscript ^0.14.0;
+
+// Bond: a refundable anti-spam deposit bound to ONE GitHub issue/PR.
+//
+// Money can only ever go to two places:
+//   - the contributor (refund / reclaim)
+//   - the charity     (forfeit)
+// The maintainer key can choose between them, but can never receive the funds.
+contract Bond(
+    bytes20 contributorPkh,   // contributor's P2PKH hash (refund + reclaim destination)
+    bytes20 maintainerPkh,    // repo's refund/forfeit-only key
+    bytes   charityLock,      // locking bytecode of the charity address
+    int     reclaimBlocks,    // relative timelock in blocks (this.age, BIP68)
+    int     maxFee,           // max sats the spender may take as fee (<= 2000)
+    bytes32 subjectHash       // sha256 of the issue id; makes one unique address per issue
+) {
+    // Maintainer marks the issue genuine: money goes back to the contributor.
+    function refund(pubkey pk, sig s) {
+        require(hash160(pk) == maintainerPkh);
+        require(checkSig(s, pk));
+        int i = this.activeInputIndex;
+        require(tx.outputs[i].lockingBytecode == new LockingBytecodeP2PKH(contributorPkh));
+        require(tx.outputs[i].value >= tx.inputs[i].value - maxFee);
+    }
+
+    // Maintainer marks the issue as spam: money goes ONLY to the charity.
+    function forfeit(pubkey pk, sig s) {
+        require(hash160(pk) == maintainerPkh);
+        require(checkSig(s, pk));
+        int i = this.activeInputIndex;
+        require(tx.outputs[i].lockingBytecode == charityLock);
+        require(tx.outputs[i].value >= tx.inputs[i].value - maxFee);
+    }
+
+    // Timeout: permissionless. Anyone may broadcast, but money can only go back to the contributor.
+    // No signature needed, so no wallet ever has to sign a covenant input.
+    function reclaim() {
+        require(this.age >= reclaimBlocks);
+        int i = this.activeInputIndex;
+        require(tx.outputs[i].lockingBytecode == new LockingBytecodeP2PKH(contributorPkh));
+        require(tx.outputs[i].value >= tx.inputs[i].value - maxFee);
+        require(subjectHash.length == 32); // keeps subjectHash in the bytecode
+    }
+}

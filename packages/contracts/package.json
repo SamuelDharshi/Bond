@@ -1,0 +1,21 @@
+{
+  "name": "@bond/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "compile": "cashc Bond.cash --output src/artifact/Bond.json && node scripts/artifact-to-ts.mjs",
+    "build": "pnpm run compile && tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@bitauth/libauth": "3.1.0-next.8",
+    "@bond/core": "workspace:*",
+    "cashscript": "0.14.0"
+  },
+  "devDependencies": {
+    "cashc": "0.14.0"
+  },
+  "sideEffects": false
+}
