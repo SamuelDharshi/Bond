@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getNetwork, lockMinutes } from '@bond/core';
+import { LINKS } from '../lib/links';
 import { href } from '../lib/router';
 import { DEMO_REPO } from '../lib/demoRepo';
 import { introEntered, onIntroEntering, runIntro } from '../lib/intro';
@@ -14,7 +15,7 @@ import { Reveal } from '../components/motion';
 import { formatBch } from '../components/Amount';
 import { TxLink } from '../components/ui';
 
-const SOURCE = import.meta.env.VITE_BLAZE_SOURCE_URL?.trim();
+const SOURCE: string | undefined = LINKS.source;
 
 const WHY = [
   {

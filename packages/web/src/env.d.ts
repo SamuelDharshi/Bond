@@ -10,6 +10,7 @@ declare module '@bond-source?raw' {
 interface ImportMetaEnv {
   readonly VITE_DEMO_MAINTAINER_WIF?: string;
   readonly VITE_DEMO_REPO?: string;
+  readonly VITE_SITE_URL?: string;
   readonly VITE_WIZ_RELAY_PRIMARY?: string;
   readonly VITE_WIZ_RELAY_FALLBACK?: string;
   readonly VITE_BLAZE_PRESENTATION_URL?: string;

@@ -1921,3 +1921,97 @@ footer {
   letter-spacing: -0.02em;
   line-height: inherit;
 }
+
+/* ---------- mandatory BCH BLAZE banner ---------- */
+.blaze-banner {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  background: var(--dark);
+  color: #ededed;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  padding: 6px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.blaze-banner strong {
+  color: var(--green);
+  font-weight: 500;
+}
+.blaze-banner a {
+  color: #fff;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--green);
+}
+.banner-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: center;
+  justify-content: center;
+}
+.banner-ember {
+  position: relative;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.banner-ember button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 1px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  min-height: 24px;
+}
+.banner-ember button:hover {
+  border-color: var(--green);
+}
+.banner-qr {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 80;
+  background: #fff;
+  color: #111;
+  padding: 12px;
+  border-radius: 16px;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  max-width: min(92vw, 320px);
+}
+.banner-qr code {
+  word-break: break-all;
+  font-size: 11px;
+  color: #111;
+}
+.banner-pending {
+  color: rgba(237, 237, 237, 0.55);
+  text-decoration: underline dotted rgba(237, 237, 237, 0.4);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.banner-ember button,
+.banner-links a {
+  position: relative;
+}
+.banner-ember button::after,
+.banner-links a::after {
+  content: '';
+  position: absolute;
+  inset: -12px -6px;
+}

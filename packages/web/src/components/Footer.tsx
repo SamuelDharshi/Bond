@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { LIVE_NETWORK, getNetwork, getNetworkConfig } from '@bond/core';
+import { LINKS } from '../lib/links';
 import { href } from '../lib/router';
 import { onPracticeNetwork, togglePracticeNetwork } from '../lib/network';
 import { Logo } from './Logo';
 
-const PRESENTATION = import.meta.env.VITE_BLAZE_PRESENTATION_URL?.trim();
-const SOURCE = import.meta.env.VITE_BLAZE_SOURCE_URL?.trim();
-const EMBER = import.meta.env.VITE_BLAZE_EMBER_ADDRESS?.trim();
+const PRESENTATION: string | undefined = LINKS.presentation;
+const SOURCE: string | undefined = LINKS.source;
+const EMBER: string | undefined = LINKS.ember;
 
 function CopyAddress({ address }: { address: string }) {
   const [copied, setCopied] = useState(false);

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { finishIntro } from './lib/intro';
 import { useRoute } from './lib/router';
 import { BchLoader, shouldShowLoader } from './components/BchLoader';
+import { BlazeBanner } from './components/BlazeBanner';
 import { Footer } from './components/Footer';
 import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
@@ -10,6 +11,7 @@ import { Home } from './pages/Home';
 const BondPage = lazy(() => import('./pages/BondRoute'));
 const StatusPage = lazy(() => import('./pages/StatusPage').then((m) => ({ default: m.StatusPage })));
 const MaintainerPage = lazy(() => import('./pages/MaintainerPage').then((m) => ({ default: m.MaintainerPage })));
+const DeckPage = lazy(() => import('./pages/DeckPage').then((m) => ({ default: m.DeckPage })));
 const MyBondsPage = lazy(() => import('./pages/MyBondsPage').then((m) => ({ default: m.MyBondsPage })));
 const HowPage = lazy(() => import('./pages/HowPage').then((m) => ({ default: m.HowPage })));
 const JudgesPage = lazy(() => import('./pages/JudgesPage').then((m) => ({ default: m.JudgesPage })));
@@ -39,9 +41,18 @@ export function App() {
       <JudgesPage />
     ) : null;
 
+  if (route.path === '/deck') {
+    return (
+      <Suspense fallback={null}>
+        <DeckPage />
+      </Suspense>
+    );
+  }
+
   return (
     <>
       {loading && <BchLoader onDone={loaded} />}
+      <BlazeBanner />
       <Nav path={route.path} />
       {page ? (
         <motion.main

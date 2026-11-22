@@ -1,10 +1,11 @@
 import { useEffect, useState, type MouseEvent } from 'react';
+import { LINKS } from '../lib/links';
 import { href } from '../lib/router';
 import { goSection } from '../lib/scroll';
 import { Logo } from './Logo';
 import { Icon } from './icons';
 
-const SOURCE = import.meta.env.VITE_BLAZE_SOURCE_URL?.trim();
+const SOURCE: string | undefined = LINKS.source;
 const SECTIONS = [
   ['how', 'how_it_works'],
   ['contract', 'the_contract'],
