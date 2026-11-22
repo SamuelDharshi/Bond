@@ -195,8 +195,7 @@ export function HeroGate() {
       <div className="gate-stage" ref={stage}>
         <div className="gate-box">
           <span className="gate-ring" />
-          <img src={`${import.meta.env.BASE_URL}brand/bond-mark.svg`} alt="" width={72} height={72} />
-          <span className="gate-box-label">BOND CONTRACT</span>
+          <img src={`${import.meta.env.BASE_URL}brand/bond-logo-light.svg`} alt="" width={150} height={36} />
         </div>
         <div className="gate-lane" ref={lane} />
       </div>
