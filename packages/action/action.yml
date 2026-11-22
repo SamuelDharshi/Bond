@@ -1,0 +1,30 @@
+name: 'Bond: refundable anti-spam deposits'
+description: 'Refund (valid), forfeit to charity (slop) or time out BCH deposits bound to GitHub issues/PRs.'
+author: 'Bond'
+branding:
+  icon: 'lock'
+  color: 'green'
+inputs:
+  github-token:
+    description: 'Token with issues: write (use secrets.GITHUB_TOKEN).'
+    required: true
+  maintainer-wif:
+    description: 'WIF of the refund/forfeit-only key whose hash160 is maintainerPkh in bond.json. Store as a secret. It can only pay the contributor or the charity.'
+    required: true
+  config-path:
+    description: 'Path of the Bond config in the repo.'
+    required: false
+    default: '.github/bond.json'
+  app-url:
+    description: 'Base URL of the Bond web app (used for "bond this issue" links). Overrides bond.json appUrl.'
+    required: false
+  auto-reclaim:
+    description: 'On scheduled runs, broadcast the permissionless reclaim() for timed-out bonds.'
+    required: false
+    default: 'true'
+outputs:
+  txids:
+    description: 'Comma-separated txids broadcast by this run.'
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
