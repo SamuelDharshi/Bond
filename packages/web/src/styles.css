@@ -1698,3 +1698,158 @@ footer {
 .f-col li {
   line-height: 1;
 }
+.step-card a {
+  padding: 12px 0 6px;
+}
+.logo {
+  min-height: 44px;
+}
+.note a,
+.lead a {
+  display: inline-block;
+  padding: 10px 0;
+}
+
+/* ---- hero layout fix: content flows below the banner + nav at every window size ---- */
+.hero {
+  height: auto;
+  min-height: max(76svh, 560px);
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--banner-h) + 64px + 40px) 0 clamp(28px, 6vh, 64px);
+}
+.hero-content {
+  position: relative;
+  inset: auto;
+  width: 100%;
+}
+.ink-rings {
+  top: calc(var(--banner-h) + 64px + 28px);
+}
+.nav:not(.scrolled) {
+  background: rgba(235, 235, 235, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+@media (max-width: 860px) {
+  .ink-rings {
+    top: calc(var(--banner-h) + 64px + 16px);
+  }
+}
+:root {
+  --coin-w: clamp(190px, 21vw, 330px);
+  --coin-r: clamp(24px, 8vw, 140px);
+}
+.ink-rings {
+  width: var(--coin-w);
+  right: var(--coin-r);
+}
+.hero-copy {
+  max-width: calc(100vw - (clamp(28px, 5.5vw, 88px) + 5vw) - var(--coin-w) - var(--coin-r) - 40px);
+}
+@media (max-width: 860px) {
+  .hero-copy {
+    max-width: 100%;
+  }
+  .ink-rings {
+    width: 150px;
+    right: 4vw;
+  }
+}
+
+/* align hero copy and illustration with the nav container */
+:root {
+  --gutter: clamp(18px, 3.5vw, 44px);
+}
+.hero-content .wrap {
+  max-width: 1280px;
+  padding-inline: var(--gutter);
+}
+.ink-rings {
+  right: max(var(--gutter), calc((100vw - 1280px) / 2 + var(--gutter)));
+}
+.hero-copy {
+  max-width: calc(min(100vw, 1280px) - 2 * var(--gutter) - var(--coin-w) - 40px);
+}
+@media (max-width: 860px) {
+  .hero-copy {
+    max-width: 100%;
+  }
+  .ink-rings {
+    right: var(--gutter);
+  }
+}
+.hero h1 {
+  font-size: clamp(32px, 3.9vw, 64px);
+  line-height: 1;
+}
+@media (max-width: 860px) {
+  .hero h1 {
+    font-size: clamp(30px, 8.2vw, 52px);
+  }
+}
+.hero {
+  align-items: center;
+}
+
+.ink-rings {
+  top: max(calc(var(--banner-h) + 64px + 28px), calc(50% - var(--coin-w) * 0.3));
+}
+
+@media (max-width: 860px) {
+  .ink-rings {
+    top: calc(var(--banner-h) + 64px + 16px);
+  }
+  .hero {
+    padding-top: calc(var(--banner-h) + 64px + 16px + 120px);
+  }
+}
+
+.ink-rings {
+  height: auto;
+  aspect-ratio: 1;
+  animation:
+    mark-in 1.2s var(--ease) both,
+    mark-float 7s ease-in-out 1.2s infinite;
+}
+@keyframes mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.82) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes mark-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ink-rings {
+    animation: none;
+  }
+}
+/* approved logo files are used as supplied: just size them */
+
+.logo img {
+  display: block;
+  width: auto;
+  max-width: none;
+}
+@media (max-width: 860px) {
+  .ink-rings {
+    top: calc(var(--banner-h) + 64px + 16px);
+    width: 150px;
+    height: 150px;
+  }
+  .hero {
+    padding-top: calc(var(--banner-h) + 64px + 16px + 150px + 24px);
+  }
+}
