@@ -1904,3 +1904,20 @@ footer {
     font-size: clamp(32px, 9.4vw, 56px);
   }
 }
+
+/* headline font: Bricolage Grotesque, heavy against light for contrast (no serif) */
+.hero h1 {
+  font-family: 'Bricolage Grotesque', var(--display);
+  font-weight: 800;
+  font-optical-sizing: auto;
+  letter-spacing: -0.022em;
+  line-height: 1;
+}
+.hl-serif {
+  font-family: 'Bricolage Grotesque', var(--display);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1em;
+  letter-spacing: -0.02em;
+  line-height: inherit;
+}
