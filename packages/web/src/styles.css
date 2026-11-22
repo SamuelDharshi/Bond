@@ -1874,3 +1874,33 @@ footer {
     font-size: clamp(32px, 9vw, 54px);
   }
 }
+
+/* headline polish: bigger, tighter, a tilted green price and a wavy underline under "nice." */
+.hero h1 {
+  font-size: clamp(36px, 4.7vw, 72px);
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+.hl-price {
+  display: inline-block;
+  transform: rotate(-3deg) translateY(2px);
+  transform-origin: 0 100%;
+  filter: drop-shadow(0 6px 14px rgba(10, 193, 142, 0.28));
+}
+.hl-serif {
+  font-size: 1.14em;
+  line-height: 0.9;
+}
+.hl-nice {
+  display: inline-block;
+  padding-bottom: 0.14em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'><path d='M0 4 Q6 0 12 4 T24 4' fill='none' stroke='%230ac18e' stroke-width='2.2' stroke-linecap='round'/></svg>");
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 24px 8px;
+}
+@media (max-width: 860px) {
+  .hero h1 {
+    font-size: clamp(32px, 9.4vw, 56px);
+  }
+}
