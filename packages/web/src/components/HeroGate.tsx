@@ -37,7 +37,7 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls: string, text?: s
 function buildCard(issue: Issue): { card: HTMLElement; stamp: HTMLElement } {
   const card = el('div', 'gate-card');
   const top = el('div', 'gate-card-top');
-  top.append(el('span', 'gate-num', issue.num), el('span', 'gate-open', 'Open'));
+  top.append(el('span', 'gate-num', issue.num));
   const title = el('div', 'gate-title', issue.title);
   const meta = el('div', 'gate-meta');
   meta.append(el('span', 'gate-chip', '0.0005 BCH'), el('span', 'gate-bonded', 'bonded ✓'));
@@ -63,7 +63,7 @@ export function HeroGate() {
       for (const [i, issue] of [ISSUES[0], ISSUES[1]].entries()) {
         const { card } = buildCard(issue);
         card.classList.add('static');
-        card.style.top = `calc(50% + ${i === 0 ? -64 : 64}px)`;
+        card.style.top = `calc(50% + ${i === 0 ? -56 : 56}px)`;
         laneEl.append(card);
       }
       return () => laneEl.replaceChildren();
@@ -78,15 +78,15 @@ export function HeroGate() {
     /** One issue's whole journey: fly in, stamp, coin out, card leaves, nodes removed. */
     const play = (issue: Issue, slot: number) => {
       const { card, stamp } = buildCard(issue);
-      const y = [-70, 0, 70][slot % 3];
+      const y = [-100, 0, 100][slot % 3];
       card.style.top = `calc(50% + ${y}px)`;
       laneEl.append(card);
       const IN = 1000;
       card.animate(
         [
-          { transform: 'translate3d(-340px, -50%, 0) scale(0.92)', opacity: 0 },
-          { transform: 'translate3d(-255px, -50%, 0) scale(1)', opacity: 1, offset: 0.7 },
-          { transform: 'translate3d(-215px, -50%, 0) scale(1)', opacity: 1 },
+          { transform: 'translate3d(calc(var(--dock) - 170px), -50%, 0) scale(0.94)', opacity: 0 },
+          { transform: 'translate3d(calc(var(--dock) - 30px), -50%, 0) scale(1)', opacity: 1, offset: 0.7 },
+          { transform: 'translate3d(var(--dock), -50%, 0) scale(1)', opacity: 1 },
         ],
         { duration: IN, easing: EASE, fill: 'forwards' },
       );
@@ -115,10 +115,10 @@ export function HeroGate() {
 
       const leave = card.animate(
         [
-          { transform: 'translate3d(-215px, -50%, 0) scale(1)', opacity: 1 },
-          { transform: 'translate3d(-185px, -50%, 0) scale(0.9)', opacity: 0 },
+          { transform: 'translate3d(var(--dock), -50%, 0) scale(1)', opacity: 1 },
+          { transform: 'translate3d(calc(var(--dock) + 40px), -50%, 0) scale(0.92)', opacity: 0 },
         ],
-        { duration: 520, delay: IN + 1500, easing: 'ease-in', fill: 'forwards' },
+        { duration: 520, delay: IN + 1100, easing: 'ease-in', fill: 'forwards' },
       );
       leave.finished.then(
         () => {
