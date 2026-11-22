@@ -19,8 +19,8 @@
 > **BCH BLAZE 2026 · Mainnet Track · a new project, built 20–22 Nov 2026.**
 >
 > - Presentation: _TODO: deck link (anyone with the link)_
-> - Source code: this repository
-> - Live site: _TODO: live URL_ · Video: _TODO_
+> - Source code: [github.com/SamuelDharshi/Bond](https://github.com/SamuelDharshi/Bond)
+> - Live site: [bond.luffyy.tech](https://bond.luffyy.tech) · Video: _TODO_
 > - Vote with EMBER2026: _TODO: token-aware `bitcoincash:z…` address_
 
 ---
@@ -452,7 +452,7 @@ Bond.cash ─► packages/contracts   the covenant, SDK, discovery
 | Requirement                      | How                                                                                                                                    | Proof                                                                                                        |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | Real BCH transactions            | Fund, refund, forfeit and keyless reclaim are built, signed and broadcast through real Fulcrum servers. No mocks.                      | [`docs/proof/DEMO_TXIDS.md`](docs/proof/DEMO_TXIDS.md) (chipnet now; mainnet txids are added after the flip) |
-| Live site judges can use         | Static site, mainnet by default in production builds, with a "Practice on testnet" switch.                                             | _TODO: live URL_ · judge guide: [`docs/JUDGE.md`](docs/JUDGE.md)                                             |
+| Live site judges can use         | Static site, mainnet by default in production builds, with a "Practice on testnet" switch.                                             | [bond.luffyy.tech](https://bond.luffyy.tech) · judge guide: [`docs/JUDGE.md`](docs/JUDGE.md)                 |
 | WizardConnect wallet flow        | The contributor connects and signs the funding transaction over WizardConnect (`@wizardconnect/react`, relays configurable).           | [`packages/web/src/lib/wallet.ts`](packages/web/src/lib/wallet.ts)                                           |
 | Original work disclosed          | New project built during the hackathon. It uses open-source libraries (CashScript, libauth, WizardConnect, React, three.js) as listed. | `package.json` files                                                                                         |
 | Public repo, README, limitations | This file.                                                                                                                             | [Limitations](#limitations-honest-list)                                                                      |
