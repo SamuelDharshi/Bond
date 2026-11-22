@@ -25,19 +25,43 @@
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <a href="https://bond.luffyy.tech"><img src="docs/images/home-hero.jpg" alt="The Bond home page" width="860"></a>
+</p>
+
+|                     The deposit terms for an issue                     |                            Connect any WizardConnect wallet                             |
+| :--------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
+| <img src="docs/images/bond-terms.jpg" alt="Deposit terms" width="420"> | <img src="docs/images/bond-connect-wallet.jpg" alt="WizardConnect QR code" width="420"> |
+
+|                         Live status of a bond                         |                                  The real mainnet transactions                                   |
+| :-------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
+| <img src="docs/images/status.jpg" alt="Bond status page" width="420"> | <img src="docs/images/home-whats-live.jpg" alt="What is live: mainnet transactions" width="420"> |
+
+|                                 How it works                                 |                             The presentation deck                              |                                 On a phone                                 |
+| :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
+| <img src="docs/images/home-how-it-works.jpg" alt="How it works" width="300"> | <img src="docs/images/deck-4-bch-usage.jpg" alt="Deck: BCH usage" width="300"> | <img src="docs/images/mobile-home.jpg" alt="Mobile home page" width="150"> |
+
+**Watch the 4-minute demo video:** [youtu.be/y4FgGXowskw](https://youtu.be/y4FgGXowskw) · **Presentation deck:** [bond.luffyy.tech/deck](https://bond.luffyy.tech/deck)
+
+---
+
 ## Contents
 
-1. [The idea](#the-idea)
-2. [How it works at a glance](#how-it-works-at-a-glance) (sequence diagram and flow charts)
-3. [Using Bond](#using-bond): step-by-step for contributors, maintainers and anyone else
-4. [What happens inside a deposit](#what-happens-inside-a-deposit) (the transaction and the states)
-5. [The contract](#the-contract)
-6. [The web app](#the-web-app) (pages and screen flow)
-7. [The GitHub Action](#the-github-action)
-8. [Install it on your repo (maintainers)](#install-it-on-your-repo-maintainers)
-9. [Develop and test](#develop-and-test)
-10. [How Bond meets the BLAZE requirements](#how-bond-meets-the-blaze-requirements)
-11. [Limitations (honest list)](#limitations-honest-list)
+1. [Screenshots](#screenshots)
+2. [The idea](#the-idea)
+3. [How it works at a glance](#how-it-works-at-a-glance) (sequence diagram and flow charts)
+4. [Using Bond](#using-bond): step-by-step for contributors, maintainers and anyone else
+5. [What happens inside a deposit](#what-happens-inside-a-deposit) (the transaction and the states)
+6. [The contract](#the-contract)
+7. [The web app](#the-web-app) (pages and screen flow)
+8. [The GitHub Action](#the-github-action)
+9. [Install it on your repo (maintainers)](#install-it-on-your-repo-maintainers)
+10. [Develop and test](#develop-and-test)
+11. [Proof and testing](#proof-and-testing)
+12. [How Bond meets the BLAZE requirements](#how-bond-meets-the-blaze-requirements)
+13. [Limitations (honest list)](#limitations-honest-list)
 
 ---
 
@@ -188,6 +212,12 @@ What you get back: the **whole deposit minus a network fee of at most `maxFeeSat
 
 If the maintainer never responds, open **Status**, find your bond, and when it says **reclaimable** press **Return deposit to contributor**. This needs **no wallet and no key**.
 
+**What each step looks like**
+
+<p align="center"><img src="docs/images/bond-terms.jpg" alt="Step 1: the terms" width="760"></p>
+<p align="center"><img src="docs/images/bond-connect-wallet.jpg" alt="Step 3: connect a wallet" width="760"></p>
+<p align="center"><img src="docs/images/status.jpg" alt="Following the bond on the Status page" width="760"></p>
+
 ### As a maintainer (you want less slop)
 
 ```
@@ -318,6 +348,13 @@ A static single-page app (React, Vite, TypeScript). It runs entirely in the brow
 | How `/how`          | Tabbed explanation and the highlighted contract source                        |
 | Judges `/judges`    | A 90-second guide for evaluators                                              |
 
+### A quick tour
+
+<p align="center"><img src="docs/images/home-how-it-works.jpg" alt="Home: how it works" width="760"></p>
+<p align="center"><img src="docs/images/how-contract.jpg" alt="The contract page with the highlighted source" width="760"></p>
+<p align="center"><img src="docs/images/judges.jpg" alt="The judges guide" width="760"></p>
+<p align="center"><img src="docs/images/deck-1-title.jpg" alt="The presentation deck" width="760"></p>
+
 ### Screen flow
 
 ```
@@ -416,7 +453,7 @@ pnpm wallets:new           # 3 chipnet wallets → .env (never overwrites)
 pnpm faucet                # chipnet coins for the contributor (captcha: you type the sum)
 pnpm balance               # real balances from Electrum
 pnpm build                 # compile contract, typecheck all, bundle Action, build web
-pnpm test:unit             # pure functions only (codec, subjectHash, config)
+pnpm test:unit             # pure functions and the wallet-signing request (13 tests)
 pnpm e2e                   # REAL chipnet: 5 positive + 7 negative cases + a simulated WizardConnect wallet (needs ~400k sats)
 pnpm --filter @bond/web dev
 pnpm check:network         # proves no network strings exist outside packages/core/src/network.ts
@@ -439,6 +476,36 @@ Bond.cash ─► packages/contracts   the covenant, SDK, discovery
 ### Deploy
 
 `vercel --prod` uses `vercel.json` (it rewrites every path to the single-page app, so URLs are clean like `/bond`). Production builds default to **mainnet**. The mainnet flip is in [docs/MAINNET.md](docs/MAINNET.md).
+
+---
+
+## Proof and testing
+
+Everything below is real. Nothing is mocked.
+
+### Real mainnet transactions
+
+| What                             | Transaction                                                                                                            |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Lock a deposit (to be refunded)  | [`2e3bca46f1db0ca1…`](https://explorer.bch.ninja/tx/2e3bca46f1db0ca122f4a972f40be73901e27edb266e13f37737a98745c55c57)  |
+| Refund to the contributor        | [`e058948aa2918887…`](https://explorer.bch.ninja/tx/e058948aa2918887ab8c9268807503f289192ecd609f8ffdeff6f84847a0ed82)  |
+| Lock a deposit (to be forfeited) | [`8ef75ee8f28194bec…`](https://explorer.bch.ninja/tx/8ef75ee8f28194bec56b1a36bb29b532a34bcf0647665916bc753e28c4d765e8) |
+| Forfeit to the charity address   | [`5d91af589433be3d…`](https://explorer.bch.ninja/tx/5d91af589433be3d2293c250078e3d9ac110b559195e5a00b6fe5c4b68045897)  |
+
+Reproduce them yourself with `pnpm mainnet:proof` (see [`docs/MAINNET.md`](docs/MAINNET.md)). The full list is in [`docs/proof/TXIDS.md`](docs/proof/TXIDS.md).
+
+### Automated tests
+
+| Suite                                        | What it covers                                                                                                                                                                                                       | Where it runs                         |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| Unit tests (13)                              | OP_RETURN codec, issue fingerprint, `bond.json` parsing, and the wallet-signing request surviving the relay                                                                                                          | `pnpm test:unit`, on every push in CI |
+| Real-chain end-to-end (12 cases)             | Fund, refund, forfeit and keyless reclaim, plus 7 attempts to break the rules (wrong key, wrong destination, fee over the cap, shared outputs, early reclaim, forged note, fake maintainer) that the network rejects | `pnpm e2e` on chipnet                 |
+| Simulated WizardConnect wallet               | A phone wallet that pairs over the real relay, shares its keys, signs the app's funding request and has the app broadcast a real bond                                                                                | `pnpm e2e` on chipnet                 |
+| Network-string check, lint, typecheck, build | No network names outside one file, strict TypeScript, a clean build                                                                                                                                                  | CI                                    |
+
+### Sponsor feedback
+
+While building Bond we found a gap in the WizardConnect SDK (it can read, but not write, its own BigInt/byte-array format, so signing crashes for any CashScript transaction). The cause, a fix plan and our workaround are in [`FEEDBACK.md`](FEEDBACK.md).
 
 ---
 
