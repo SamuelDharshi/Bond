@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { getNetwork, lockMinutes } from '@bond/core';
 import { href } from '../lib/router';
-import { DEMO_ISSUE_URL, DEMO_REPO } from '../lib/demoRepo';
+import { DEMO_REPO } from '../lib/demoRepo';
 import { introEntered, onIntroEntering, runIntro } from '../lib/intro';
 import { proofTxids } from '../lib/proof';
 import { useBchUsd } from '../lib/price';
 import { TEAM } from '../team';
 import { InkField } from '../components/InkField';
-import { InkRings } from '../components/InkRings';
+import { HeroGate } from '../components/HeroGate';
+import { LiveBondStrip } from '../components/LiveBondStrip';
 import { ContractScene } from '../components/ContractScene';
 import { PixelAvatar } from '../components/PixelAvatar';
 import { Reveal } from '../components/motion';
@@ -127,7 +128,10 @@ export function Home() {
       <InkField settled={settled} />
       <div className="page-root">
         <header className="hero">
-          <InkRings />
+          <div className="gate-desk">
+            <HeroGate />
+            <LiveBondStrip />
+          </div>
           <div className="hero-content">
             <div className="wrap">
               <div className="hero-copy">
@@ -152,7 +156,7 @@ export function Home() {
                 Lock a small deposit to open an issue. Genuine reports get it back. Spam pays a charity.
               </p>
               <div className="actions">
-                <a className="btn primary" href={href('/bond', { issue: DEMO_ISSUE_URL })}>
+                <a className="btn primary" href={href('/bond')}>
                   Bond an issue
                 </a>
                 <a className="btn" href={href('/how')}>
@@ -161,6 +165,10 @@ export function Home() {
                 <a className="btn" href={href('/judges')}>
                   Judges: start here
                 </a>
+              </div>
+              <div className="gate-mob">
+                <HeroGate />
+                <LiveBondStrip />
               </div>
             </div>
           </div>
@@ -378,7 +386,7 @@ export function Home() {
                 <h2>Put a price on spam.</h2>
                 <p className="lead">Bond an issue in under two minutes and watch it come back.</p>
                 <div className="actions">
-                  <a className="btn" href={href('/bond', { issue: DEMO_ISSUE_URL })}>
+                  <a className="btn" href={href('/bond')}>
                     Bond an issue
                   </a>
                   <a className="btn ghost" href={href('/judges')}>

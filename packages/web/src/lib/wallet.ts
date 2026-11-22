@@ -132,7 +132,9 @@ export async function fundWithWizardConnect(
   try {
     const res = await manager.signTransaction(
       {
-        transaction: toRelayJson(transaction) as unknown as Parameters<DappConnectionManager['signTransaction']>[0]['transaction'],
+        transaction: toRelayJson(transaction) as unknown as Parameters<
+          DappConnectionManager['signTransaction']
+        >[0]['transaction'],
         inputPaths,
       },
       { signal },
