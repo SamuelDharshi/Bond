@@ -18,10 +18,10 @@
 
 > **BCH BLAZE 2026 · Mainnet Track · a new project, built 20–22 Nov 2026.**
 >
-> - Presentation: _TODO: deck link (anyone with the link)_
+> - Presentation: [bond.luffyy.tech/deck](https://bond.luffyy.tech/deck)
 > - Source code: [github.com/SamuelDharshi/Bond](https://github.com/SamuelDharshi/Bond)
-> - Live site: [bond.luffyy.tech](https://bond.luffyy.tech) · Video: _TODO_
-> - Vote with EMBER2026: _TODO: token-aware `bitcoincash:z…` address_
+> - Live site: [bond.luffyy.tech](https://bond.luffyy.tech) · Video: [youtu.be/y4FgGXowskw](https://youtu.be/y4FgGXowskw)
+> - Vote with EMBER2026: `bitcoincash:zz5cymmtgzxttwhqmf3a0zh0q47ng8897c9zu4ntxw`
 
 ---
 

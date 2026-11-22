@@ -1,4 +1,5 @@
 import { LIVE_NETWORK, getNetwork, getNetworkConfig } from '@bond/core';
+import { LINKS } from '../lib/links';
 import { href } from '../lib/router';
 import { proofTxids } from '../lib/proof';
 import { Amount } from '../components/Amount';
@@ -6,7 +7,7 @@ import { HoverCard, Reveal } from '../components/motion';
 import { Icon, IconBox } from '../components/icons';
 import { TxLink } from '../components/ui';
 
-const VIDEO = import.meta.env.VITE_BLAZE_VIDEO_URL?.trim();
+const VIDEO: string | undefined = LINKS.video;
 
 export function JudgesPage() {
   const net = getNetwork();
