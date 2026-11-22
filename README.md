@@ -60,7 +60,7 @@ The usual defences all have a catch:
 - A spammer who sends hundreds of reports has to lock up money for every one, and loses it to **charity** each time a maintainer marks it as slop.
 - The maintainer never receives the money, so there is no incentive to mark real reports as spam, and no wallet to look after.
 
-Bond raises the **cost of slop** without charging honest people. It proves money, not identity (see [Limitations](#limitations-honest-list)).
+Bond raises the **cost of slop** without charging honest people. It makes spam expensive instead of trying to detect it (see [Limitations](#limitations-honest-list)).
 
 ### Three outcomes, nothing else
 

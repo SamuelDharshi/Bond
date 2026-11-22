@@ -95,8 +95,8 @@ export function Footer() {
         </div>
         <div className="f-bottom">
           <p className="legal">
-            Bond is experimental, open-source (MIT) and unaudited. Nothing here is financial advice, and a deposit
-            proves money, not identity. Every status is read live from the Bitcoin Cash network.
+            Bond is experimental, open-source (MIT) and unaudited, and nothing here is financial advice. Genuine
+            contributors get their whole deposit back. Every status is read live from the Bitcoin Cash network.
             {net.isTestnet && ` You are on ${net.label}: test coins only.`}
           </p>
           <p>Built for BCH BLAZE 2026</p>
