@@ -177,7 +177,7 @@ A maintainer can still refund or forfeit a bond that is already reclaimable, as 
   └───────────────┘   └───────────────┘   └───────────────┘   └───────────────┘
 ```
 
-1. Open the site and press **bond_an_issue** (or open `#/bond`).
+1. Open the site and press **bond_an_issue** (or open `/bond`).
 2. **Paste the GitHub issue link**, for example `https://github.com/owner/repo/issues/42`. Bond reads the repo's `bond.json` to learn the deposit size and timeout, and tells you what you would lock.
 3. **Connect a WizardConnect wallet**. A QR code and a `wiz://` link appear. In the wallet (for example Cashonize, which has a Connect tab), scan the code or paste the link, and approve the connection. The wallet must be on the **same network as the site** (the footer shows `on chipnet` or `on mainnet`).
 4. Press **Lock deposit** and **approve the transaction in your wallet**. You are shown a step-by-step progress animation and then a real transaction id that links to a block explorer.
@@ -274,7 +274,7 @@ Rules enforced by the covenant on every path: the output goes to the **exact** a
    │   at any moment                              │     (to the contributor)
 ```
 
-`reclaimBlocks` is set per repo in `bond.json`: about **14 days (2016 blocks)** by default for real repos and about **10 minutes** for the sample repo. Chipnet runs faster blocks, so the app converts block counts to minutes and shows "about N more minutes". If you press reclaim too early the app says "not yet" and you retry shortly: the network is the final judge of the timelock.
+`reclaimBlocks` is set per repo in `bond.json`: about **14 days (2016 blocks)** by default for real repos and a few minutes when testing on chipnet. Chipnet runs faster blocks, so the app converts block counts to minutes and shows "about N more minutes". If you press reclaim too early the app says "not yet" and you retry shortly: the network is the final judge of the timelock.
 
 ---
 
@@ -309,36 +309,34 @@ A static single-page app (React, Vite, TypeScript). It runs entirely in the brow
 
 ### Pages
 
-| Page (route)              | What it is for                                                                |
-| ------------------------- | ----------------------------------------------------------------------------- |
-| Home `#/`                 | The idea, a live block-height strip, how it works, the contract, what is live |
-| Bond `#/bond`             | The three-step flow: choose issue → connect wallet → lock deposit             |
-| My bonds `#/mybonds`      | Every deposit you locked from this browser, with live status                  |
-| Status `#/status`         | Live bonds of any issue, and the keyless **Return deposit** button            |
-| Maintainer `#/maintainer` | The demo console to refund or forfeit (sample repo only)                      |
-| How `#/how`               | Tabbed explanation and the highlighted contract source                        |
-| Judges `#/judges`         | A 90-second guide for evaluators                                              |
+| Page (route)        | What it is for                                                                |
+| ------------------- | ----------------------------------------------------------------------------- |
+| Home `/`            | The idea, a live block-height strip, how it works, the contract, what is live |
+| Bond `/bond`        | The three-step flow: choose issue → connect wallet → lock deposit             |
+| My bonds `/mybonds` | Every deposit you locked from this browser, with live status                  |
+| Status `/status`    | Live bonds of any issue, and the keyless **Return deposit** button            |
+| How `/how`          | Tabbed explanation and the highlighted contract source                        |
+| Judges `/judges`    | A 90-second guide for evaluators                                              |
 
 ### Screen flow
 
 ```
                          ┌─────────────┐
-                         │  Home  #/   │
+                         │   Home  /   │
                          └──┬───────┬──┘
               bond_an_issue │       │ my_bonds / judges / how_it_works
                             ▼       ▼
   ┌─────────────────────────────┐  ┌────────────┐  ┌───────────┐
-  │ Bond  #/bond                │  │ My bonds   │  │ Judges    │
-  │  [1 Issue] ► [2 Wallet] ►   │  │ #/mybonds  │  │ How       │
+  │ Bond  /bond                 │  │ My bonds   │  │ Judges    │
+  │  [1 Issue] ► [2 Wallet] ►   │  │ /mybonds   │  │ How       │
   │  [3 Lock deposit]           │  └─────┬──────┘  └───────────┘
   └──────────────┬──────────────┘        │
                  │ after locking         │ "Full status"
                  ▼                       ▼
-         ┌───────────────┐        ┌───────────────┐
-         │ Status #/status│◄──────►│ Maintainer    │
-         │  live bonds,   │        │ #/maintainer  │
-         │  Return deposit│        │ refund/forfeit│
-         └───────────────┘        └───────────────┘
+         ┌─────────────────────────────────────┐
+         │ Status  /status                     │
+         │  live bonds, Return deposit button  │
+         └─────────────────────────────────────┘
 ```
 
 ### What a visitor sees during a transaction
@@ -382,7 +380,7 @@ It holds only the refund/forfeit-only key (secret `BOND_MAINTAINER_WIF`). The ke
 ## Install it on your repo (maintainers)
 
 1. **Make a key** (the bot's refund/forfeit-only key): `pnpm wallets:new`, then copy `MAINTAINER_WIF` and its `pkh`.
-2. **Add `.github/bond.json`** (see [demo-repo/.github/bond.json](demo-repo/.github/bond.json)):
+2. **Add `.github/bond.json`** (this repo's own [.github/bond.json](.github/bond.json) is a working example):
 
    ```json
    {
@@ -404,7 +402,7 @@ It holds only the refund/forfeit-only key (secret `BOND_MAINTAINER_WIF`). The ke
    | `reclaimBlocks`  | how long before anyone can send a stuck deposit back (2016 ≈ 14 days) |
    | `maxFeeSats`     | the most the network fee can take from a deposit (300 to 2000)        |
 
-3. **Add the workflow**: copy [demo-repo/.github/workflows/bond.yml](demo-repo/.github/workflows/bond.yml) and point `uses:` at this repo's `packages/action`.
+3. **Add the workflow**: copy [.github/workflows/bond.yml](.github/workflows/bond.yml) and point `uses:` at this repo's `packages/action`.
 4. **Add the secret** `BOND_MAINTAINER_WIF` (Settings → Secrets → Actions) and create the labels `bonded ✓`, `valid` and `slop`.
 5. Tell contributors to bond their issue at your Bond site, or link it in your `CONTRIBUTING.md`.
 
@@ -420,8 +418,6 @@ pnpm balance               # real balances from Electrum
 pnpm build                 # compile contract, typecheck all, bundle Action, build web
 pnpm test:unit             # pure functions only (codec, subjectHash, config)
 pnpm e2e                   # REAL chipnet: 5 positive + 7 negative cases (needs ~400k sats)
-pnpm demo:seed             # bonded / refunded / forfeited / reclaimable demo bonds → docs/proof/DEMO_TXIDS.md
-pnpm demo:repo             # publish demo-repo/ to GitHub (uses gh, or prints manual steps)
 pnpm --filter @bond/web dev
 pnpm check:network         # proves no network strings exist outside packages/core/src/network.ts
 ```
@@ -435,27 +431,26 @@ Bond.cash ─► packages/contracts   the covenant, SDK, discovery
              packages/core        network config, codecs, Electrum client, timelock maths
              packages/action      the GitHub Action (bundled into dist/)
              packages/web         the website
-             demo-repo/           a ready-to-copy sample repo setup
-             scripts/             wallets, faucet, balances, demo seeding, keyless reclaim
+             scripts/             wallets, faucet, balances, keyless reclaim, mainnet proof
              tests/               unit tests and real-chain end-to-end tests
              docs/                protocol, mainnet flip, decisions, judge guide, submission
 ```
 
 ### Deploy
 
-`vercel --prod` uses `vercel.json` (it rewrites every path to the single-page app, so URLs are clean like `/bond`). Production builds default to **mainnet**. For the shared demo console also set `VITE_DEMO_MAINTAINER_WIF` (a public shared key that must match the maintainer key in the sample repo's `bond.json`) and `VITE_DEMO_REPO`. The mainnet flip is in [docs/MAINNET.md](docs/MAINNET.md).
+`vercel --prod` uses `vercel.json` (it rewrites every path to the single-page app, so URLs are clean like `/bond`). Production builds default to **mainnet**. The mainnet flip is in [docs/MAINNET.md](docs/MAINNET.md).
 
 ---
 
 ## How Bond meets the BLAZE requirements
 
-| Requirement                      | How                                                                                                                                    | Proof                                                                                                                                                           |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Real BCH transactions            | Fund, refund, forfeit and keyless reclaim are built, signed and broadcast through real Fulcrum servers. No mocks.                      | [`docs/proof/DEMO_TXIDS.md`](docs/proof/DEMO_TXIDS.md) (real mainnet transactions: lock, refund and forfeit, recorded 22 Nov 2026; chipnet runs are listed too) |
-| Live site judges can use         | Static site, mainnet by default in production builds, with a "Practice on testnet" switch.                                             | [bond.luffyy.tech](https://bond.luffyy.tech) · judge guide: [`docs/JUDGE.md`](docs/JUDGE.md)                                                                    |
-| WizardConnect wallet flow        | The contributor connects and signs the funding transaction over WizardConnect (`@wizardconnect/react`, relays configurable).           | [`packages/web/src/lib/wallet.ts`](packages/web/src/lib/wallet.ts)                                                                                              |
-| Original work disclosed          | New project built during the hackathon. It uses open-source libraries (CashScript, libauth, WizardConnect, React, three.js) as listed. | `package.json` files                                                                                                                                            |
-| Public repo, README, limitations | This file.                                                                                                                             | [Limitations](#limitations-honest-list)                                                                                                                         |
+| Requirement                      | How                                                                                                                                    | Proof                                                                                                                                                 |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Real BCH transactions            | Fund, refund, forfeit and keyless reclaim are built, signed and broadcast through real Fulcrum servers. No mocks.                      | [`docs/proof/TXIDS.md`](docs/proof/TXIDS.md) (real mainnet transactions: lock, refund and forfeit, recorded 22 Nov 2026; chipnet runs are listed too) |
+| Live site judges can use         | Static site, mainnet by default in production builds, with a "Practice on testnet" switch.                                             | [bond.luffyy.tech](https://bond.luffyy.tech) · judge guide: [`docs/JUDGE.md`](docs/JUDGE.md)                                                          |
+| WizardConnect wallet flow        | The contributor connects and signs the funding transaction over WizardConnect (`@wizardconnect/react`, relays configurable).           | [`packages/web/src/lib/wallet.ts`](packages/web/src/lib/wallet.ts)                                                                                    |
+| Original work disclosed          | New project built during the hackathon. It uses open-source libraries (CashScript, libauth, WizardConnect, React, three.js) as listed. | `package.json` files                                                                                                                                  |
+| Public repo, README, limitations | This file.                                                                                                                             | [Limitations](#limitations-honest-list)                                                                                                               |
 
 ---
 
@@ -464,7 +459,6 @@ Bond.cash ─► packages/contracts   the covenant, SDK, discovery
 - **A bond proves money, not identity.** A well-funded spammer can still pay. Bond raises the cost of slop; it doesn't detect it.
 - **Maintainer griefing is possible.** The bot key (or a malicious maintainer) can forfeit a genuine bond to charity. It can never take the money, but the contributor still loses it.
 - **GitHub scheduled runs can lag** by minutes to hours, and label events depend on Actions being enabled. The keyless reclaim button in the web app works regardless.
-- **The demo key is public.** Anyone can refund or forfeit demo-repo bonds (still only to the contributor or the charity). Use real secrets on real repos.
 - **Changing `bond.json`** (maintainer key, charity, timeout, fee cap) changes the derived address, so the Action stops finding older bonds. They stay safe and reclaimable by their contributor via `reclaim()` with the old parameters.
 - **Bond history is per browser.** The "my bonds" list is stored in your browser. The deposits themselves are on-chain and visible on the Status page.
 - **Wallet support:** the funding flow needs a wallet that speaks WizardConnect and signs P2PKH inputs on the active network. It's coded against the official packages but hasn't been tested with every wallet.

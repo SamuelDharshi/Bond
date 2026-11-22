@@ -28,10 +28,8 @@ export function JudgesPage() {
     },
     {
       icon: <Icon.Key />,
-      title: 'Act as the maintainer',
-      text: 'Press Refund and the deposit goes back to your wallet.',
-      to: href('/maintainer'),
-      cta: 'Open console',
+      title: 'Settle it',
+      text: 'The repo maintainer adds the label valid (refund) or slop (charity). Or wait for the timeout and return it yourself.',
     },
     {
       icon: <Icon.Check />,

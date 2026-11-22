@@ -10,7 +10,6 @@ import { Home } from './pages/Home';
 
 const BondPage = lazy(() => import('./pages/BondRoute'));
 const StatusPage = lazy(() => import('./pages/StatusPage').then((m) => ({ default: m.StatusPage })));
-const MaintainerPage = lazy(() => import('./pages/MaintainerPage').then((m) => ({ default: m.MaintainerPage })));
 const DeckPage = lazy(() => import('./pages/DeckPage').then((m) => ({ default: m.DeckPage })));
 const MyBondsPage = lazy(() => import('./pages/MyBondsPage').then((m) => ({ default: m.MyBondsPage })));
 const HowPage = lazy(() => import('./pages/HowPage').then((m) => ({ default: m.HowPage })));
@@ -31,8 +30,6 @@ export function App() {
       <BondPage params={route.params} />
     ) : route.path === '/status' ? (
       <StatusPage params={route.params} />
-    ) : route.path === '/maintainer' ? (
-      <MaintainerPage params={route.params} />
     ) : route.path === '/mybonds' ? (
       <MyBondsPage />
     ) : route.path === '/how' ? (

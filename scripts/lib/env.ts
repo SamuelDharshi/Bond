@@ -34,7 +34,7 @@ export function setEnvVar(key: string, value: string, force = false): boolean {
   return true;
 }
 
-export function requireKey(name: 'MAINTAINER_WIF' | 'CONTRIBUTOR_WIF' | 'CHARITY_WIF'): KeyInfo {
+export function requireKey(name: string): KeyInfo {
   loadEnv();
   const wif = process.env[name];
   if (!wif) throw new Error(`${name} missing in .env — run \`pnpm wallets:new\` first`);

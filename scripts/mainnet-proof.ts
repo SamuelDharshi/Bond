@@ -48,7 +48,7 @@ try {
   ] as const) {
     const funded = await fundBond(chain, config, issue(number), contributor);
     console.log(`\n#${number} locked: ${net.explorerTx(funded.fundingTxid)}`);
-    record(SECTION, `fund: bond #${number} (${kind} demo)`, funded.fundingTxid);
+    record(SECTION, `fund: bond #${number}`, funded.fundingTxid);
 
     const args = { bond: funded.bond, utxo: funded.utxo, provider, maintainerKey };
     const hex = kind === 'refund' ? buildRefundTx(args) : buildForfeitTx(args);
@@ -65,7 +65,10 @@ try {
     30_000,
     2000,
   );
-  console.log(`\nContributor wallet after the test: ${await chain.getBalance(contributor.address)} sats`, gone ? '' : '');
+  console.log(
+    `\nContributor wallet after the test: ${await chain.getBalance(contributor.address)} sats`,
+    gone ? '' : '',
+  );
 } finally {
   await chain.close();
 }

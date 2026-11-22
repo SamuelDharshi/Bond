@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: [
-        { find: /^@proof-txids$/, replacement: resolve(ROOT, 'docs/proof/demo-txids.json') },
+        { find: /^@proof-txids$/, replacement: resolve(ROOT, 'docs/proof/txids.json') },
         { find: /^@bond-source(?=\?raw$)/, replacement: resolve(ROOT, 'packages/contracts/Bond.cash') },
       ],
     },

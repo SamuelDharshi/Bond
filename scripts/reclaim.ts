@@ -1,14 +1,14 @@
 // pnpm reclaim <issue-url> [config-path] — permissionless: return every timed-out bond on an issue
 // to its contributor. Uses NO private key, only public chain data and the repo's bond.json.
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { Chain, getNetwork, isTimelockNotReached, notYetMessage, parseBondConfig, parseIssueUrl } from '@bond/core';
 import { buildReclaimTx, getBondStatus } from '@bond/contracts';
-import { DEMO_CONFIG_PATH } from './lib/demo.js';
-import { loadEnv } from './lib/env.js';
+import { ROOT, loadEnv } from './lib/env.js';
 import { record } from './lib/txlog.js';
 
 loadEnv();
-const [url, cfgPath = DEMO_CONFIG_PATH] = process.argv.slice(2);
+const [url, cfgPath = resolve(ROOT, '.github', 'bond.json')] = process.argv.slice(2);
 if (!url) {
   console.error('usage: pnpm reclaim <github-issue-url> [path/to/bond.json]');
   process.exit(1);

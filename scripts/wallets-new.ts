@@ -20,10 +20,4 @@ for (const role of ['MAINTAINER', 'CONTRIBUTOR', 'CHARITY'] as const) {
   console.log(`${role.padEnd(11)} (new)     ${k.address}  pkh=${k.pkhHex}`);
 }
 
-// The demo maintainer pane uses the demo repo's maintainer key. It is PUBLIC and worthless (testnet only).
-if (net.isTestnet) {
-  const m = keyFromWif(process.env.MAINTAINER_WIF!);
-  if (setEnvVar('VITE_DEMO_MAINTAINER_WIF', m.wif))
-    console.log('VITE_DEMO_MAINTAINER_WIF set to the maintainer key (public demo key)');
-}
 console.log(`\nNetwork: ${net.name}. Keys are in .env (gitignored). Next: pnpm faucet`);

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getNetwork, lockMinutes } from '@bond/core';
 import { LINKS } from '../lib/links';
 import { href } from '../lib/router';
-import { DEMO_REPO } from '../lib/demoRepo';
+import { PROJECT_REPO } from '../lib/projectRepo';
 import { introEntered, onIntroEntering, runIntro } from '../lib/intro';
 import { proofTxids } from '../lib/proof';
 import { useBchUsd } from '../lib/price';
@@ -120,8 +120,7 @@ export function Home() {
   const deposit = 50000;
   const approx =
     usd && !net.isTestnet ? `about $${((deposit / 1e8) * usd).toFixed(2)}` : net.isTestnet ? 'test coins' : '';
-  const demoRepoUrl = `https://github.com/${DEMO_REPO[0]}/${DEMO_REPO[1]}`;
-  const repoConfigured = Boolean(import.meta.env.VITE_DEMO_REPO);
+  const repoUrl = `https://github.com/${PROJECT_REPO[0]}/${PROJECT_REPO[1]}`;
 
   return (
     <div className="home">
@@ -330,19 +329,19 @@ export function Home() {
                     <tr>
                       <td>GitHub Action</td>
                       <td className="addr">
-                        <a href={demoRepoUrl} target="_blank" rel="noreferrer">
-                          github.com/{DEMO_REPO[0]}/{DEMO_REPO[1]}
+                        <a href={repoUrl} target="_blank" rel="noreferrer">
+                          github.com/{PROJECT_REPO[0]}/{PROJECT_REPO[1]}
                         </a>
                       </td>
                       <td>
-                        <span className={`pill ${repoConfigured ? 'ok' : ''}`}>{repoConfigured ? 'live' : 'soon'}</span>
+                        <span className="pill ok">live</span>
                       </td>
                     </tr>
                     <tr>
                       <td>On-chain tests</td>
                       <td className="addr">
                         {SOURCE ? (
-                          <a href={`${SOURCE}/blob/main/docs/proof/DEMO_TXIDS.md`} target="_blank" rel="noreferrer">
+                          <a href={`${SOURCE}/blob/main/docs/proof/TXIDS.md`} target="_blank" rel="noreferrer">
                             12 of 12 cases, real transactions
                           </a>
                         ) : (

@@ -17,10 +17,7 @@
     "wallets:new": "tsx scripts/wallets-new.ts",
     "faucet": "tsx scripts/faucet.ts",
     "balance": "tsx scripts/balance.ts",
-    "demo:seed": "tsx scripts/demo-seed.ts",
-    "demo:repo": "tsx scripts/demo-repo.ts",
     "check:network": "tsx scripts/check-network-strings.ts",
-    "demo:config": "tsx scripts/demo-config.ts",
     "reclaim": "tsx scripts/reclaim.ts",
     "mainnet:proof": "tsx scripts/mainnet-proof.ts"
   },

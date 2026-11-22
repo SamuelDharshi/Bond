@@ -348,9 +348,8 @@ export function BondPage({ params }: { params: URLSearchParams }) {
             <TxFollow txid={result.txid} />
             <p className="small">
               The repo&apos;s bot will label the issue “bonded ✓”. Next:{' '}
-              <a href={href('/status', { issue: issueUrl })}>watch the status</a>, see it in{' '}
-              <a href={href('/mybonds')}>my bonds</a>, or{' '}
-              <a href={href('/maintainer', { issue: issueUrl })}>act as the maintainer</a>.
+              <a href={href('/status', { issue: issueUrl })}>watch the status</a> or see it in{' '}
+              <a href={href('/mybonds')}>my bonds</a>.
             </p>
           </div>
         )}

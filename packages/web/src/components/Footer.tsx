@@ -78,9 +78,6 @@ export function Footer() {
               <li>
                 <a href={href('/status')}>Status</a>
               </li>
-              <li>
-                <a href={href('/maintainer')}>Maintainer console</a>
-              </li>
             </ul>
           </div>
           <div className="f-col">

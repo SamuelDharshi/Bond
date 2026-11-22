@@ -1,33 +1,27 @@
-# Judges: 90 seconds
+# For judges: 2 minutes, one real mainnet round trip
 
-You will lock a tiny deposit and get it back. On mainnet the deposit is **0.0005 BCH** (about 9 cents at today's price), refunded in full minus a network fee of under 1,500 sats.
+You lock a small deposit against a GitHub issue and see it settle. The minimum deposit is **0.0005 BCH** (about 9 cents), and a refund returns it minus a network fee of under 1,500 sats.
 
 ## Before you start
 
-- A **WizardConnect** wallet with a little BCH on the network the site is on (shown as a badge in the top bar). The site opens on **mainnet**. To try it with free test coins instead, use **Practice on testnet** in the footer.
-- Nothing to install, no account.
+- A **WizardConnect** wallet (for example Cashonize) holding a little BCH on **mainnet**. The site opens on mainnet.
+- Nothing to install, no account. To try with free test coins instead, use **Practice on testnet** in the footer.
 
 ## The flow
 
-1. **Open the site → Judges: start here.**
-2. **Bond the sample issue** (step 2 card). Press _Continue_, then _Connect with WizardConnect_ and scan the QR with your wallet. Press _Lock deposit_ and approve in the wallet. The page shows the transaction id and an explorer link.
-3. **Act as the maintainer** (step 3 card → Maintainer). Press **Refund**. The deposit goes back to the wallet that bonded it. The page shows the refund transaction id.
-4. **Check the proof** (step 4 card → Status). The bond shows as _refunded_, with every transaction linked to the explorer.
+1. Open https://bond.luffyy.tech and press **bond_an_issue**.
+2. Paste an issue link from the repo, for example `https://github.com/SamuelDharshi/Bond/issues/3`, and press **Load terms**. You see the deposit, where it goes on each outcome, and the timeout.
+3. Press **Continue**, connect your wallet (scan the QR or paste the `wiz://` link), press **Lock deposit** and approve in the wallet. The page shows the transaction id with an explorer link.
+4. Open **my_bonds** or **Status** to follow it. When the repo maintainer labels the issue `valid` the deposit is refunded, and `slop` sends it to the charity address. If nobody acts before the timeout, the Status page shows **Return deposit to contributor**, which anyone can press with no wallet.
 
-Try **Forfeit to charity** on a second bond to see the money go to the charity address instead. After the timeout, a bond nobody acted on shows **Return deposit to contributor**, which needs no wallet.
+## Real transactions already recorded
+
+Lock, refund and forfeit on mainnet are listed in [`proof/TXIDS.md`](proof/TXIDS.md) and in the "what's live" table on the home page.
 
 ## If something goes wrong
 
-Every step shows a plain error and a **Retry** button. Common ones:
+Every step shows a plain error and a **Retry** button.
 
 - _No coins found in this wallet_: the wallet is on a different network than the site, or has no spendable coins.
 - _The wallet did not answer in time_: the wallet app was closed or offline. Retry the connection.
 - _Not yet: the network's timelock hasn't passed_: wait the number of minutes shown and press the button again.
-
-## No wallet?
-
-Watch the video (linked from the Judges page) or open the real transactions listed on the Judges page and in [`docs/proof/DEMO_TXIDS.md`](docs/proof/DEMO_TXIDS.md).
-
-## About the Maintainer console
-
-It signs with a **public shared key** so one person can try both sides. The contract only allows that key to pay the person who bonded or the charity, so it can refund or forfeit but can never take the money. In a real repository the key lives only in a GitHub Actions secret.

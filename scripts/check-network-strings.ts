@@ -10,6 +10,8 @@ const ALLOWED = new Set([
   'packages/core/src/network.ts',
   'scripts/check-network-strings.ts',
   'tests/unit.test.ts', // feeds explicit network names to the config parser on purpose
+  'scripts/mainnet-proof.ts', // spends real BCH, so it is mainnet-only by design and refuses anything else
+  'packages/web/src/lib/links.ts', // the project's public EMBER2026 donation address (a fixed mainnet address)
 ]);
 const DIRS = [
   'packages/core/src',

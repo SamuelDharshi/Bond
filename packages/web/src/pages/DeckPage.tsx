@@ -252,7 +252,7 @@ function How() {
 
 function Vision() {
   const items = [
-    ['Now', 'Live on Bitcoin Cash mainnet with a GitHub Action and a web app.'],
+    ['Now', 'Live on Bitcoin Cash with a GitHub Action and a web app.'],
     ['Next', 'Other hosts (GitLab, Gitea) and deposit sizes that depend on the label or the repo.'],
     ['Then', 'Shared maintainer teams and community-chosen charities.'],
     ['Goal', 'A refundable deposit becomes the normal way to reach any busy maintainer.'],
@@ -288,7 +288,7 @@ function Thanks() {
         <h1>Thank you.</h1>
       </Rise>
       <Rise i={1}>
-        <p className="deck-sub">Try it: lock a deposit on mainnet and get it back.</p>
+        <p className="deck-sub">Try it: lock a deposit and get it back.</p>
       </Rise>
       <Rise i={2} className="deck-end">
         {qr && <img src={qr} alt="QR code for bond.luffyy.tech" width={170} height={170} />}
