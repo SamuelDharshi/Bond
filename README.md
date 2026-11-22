@@ -443,7 +443,7 @@ Bond.cash ─► packages/contracts   the covenant, SDK, discovery
 
 ### Deploy
 
-`vercel --prod` uses `vercel.json`, or push to `main` for GitHub Pages (`.github/workflows/pages.yml`). Production builds default to **mainnet**. For the shared demo console also set `VITE_DEMO_MAINTAINER_WIF` (a public shared key that must match the maintainer key in the sample repo's `bond.json`) and `VITE_DEMO_REPO`. The mainnet flip is in [docs/MAINNET.md](docs/MAINNET.md).
+`vercel --prod` uses `vercel.json` (it rewrites every path to the single-page app, so URLs are clean like `/bond`). Production builds default to **mainnet**. For the shared demo console also set `VITE_DEMO_MAINTAINER_WIF` (a public shared key that must match the maintainer key in the sample repo's `bond.json`) and `VITE_DEMO_REPO`. The mainnet flip is in [docs/MAINNET.md](docs/MAINNET.md).
 
 ---
 

@@ -2,12 +2,12 @@
 
 Everything network-specific comes from `BCH_NETWORK` (see `packages/core/src/network.ts`). `pnpm check:network` proves no other source file names a network.
 
-1. **Switch network.** In `.env` (and in Vercel or GitHub Pages build settings) set `BCH_NETWORK=mainnet`.
+1. **Switch network.** In `.env` (and in the Vercel build settings) set `BCH_NETWORK=mainnet`.
 2. **New maintainer key.** Move the chipnet keys aside (`mv .env .env.chipnet`), set `BCH_NETWORK=mainnet` in a fresh `.env`, run `pnpm wallets:new`, and store `MAINTAINER_WIF` as the `BOND_MAINTAINER_WIF` secret in the demo repo. **Don't** set `VITE_DEMO_MAINTAINER_WIF` on mainnet unless you accept that anyone can refund or forfeit the demo bonds (they still can't steal them).
 3. **bond.json.** `pnpm demo:config` rewrites `demo-repo/.github/bond.json` with `"network": "mainnet"` and `bitcoincash:` addresses. Use a real charity address you control or trust, then push it to the demo repo.
 4. **Fund.** Send about **0.002 BCH** (200,000 sats) to the contributor address printed by `pnpm balance`. The seed uses 4 bonds × 50,000 sats plus fees, and most of it comes back.
 5. **Seed.** `pnpm demo:seed`. The txids land in `docs/proof/DEMO_TXIDS.md` under a "(mainnet)" section.
-6. **Redeploy the web app** with `BCH_NETWORK=mainnet` (`vercel --prod` or push to `main` for Pages).
+6. **Redeploy the web app** with `BCH_NETWORK=mainnet` (`vercel --prod`).
 
 ## The 4 mainnet txids the submission needs
 

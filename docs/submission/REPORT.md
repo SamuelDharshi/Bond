@@ -12,7 +12,7 @@
 | Scripts: `wallets:new`, `faucet`, `balance`, `e2e`, `demo:seed`, `demo:repo`, `demo:config`, `reclaim`, `check:network`                 | `scripts/`, `tests/`                                        | ✅                                                         |
 | Demo repo files (`bond.json`, workflow, README)                                                                                         | `demo-repo/`                                                | ✅                                                         |
 | Docs: PROTOCOL, MAINNET, DECK, VIDEO_SCRIPT, DECISIONS, README                                                                          | `docs/`, root                                               | ✅                                                         |
-| Deploy: `vercel.json`, GitHub Pages workflow, CI workflow                                                                               | root, `.github/workflows/`                                  | ✅ (not deployed; no credentials here)                     |
+| Deploy: `vercel.json`, CI workflow                                                                                                      | root, `.github/workflows/`                                  | ✅ (not deployed; no credentials here)                     |
 
 ## Chipnet txids
 
