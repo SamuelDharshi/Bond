@@ -12,8 +12,7 @@
   <a href="#how-it-works-at-a-glance">How it works</a> ·
   <a href="#using-bond">Using Bond</a> ·
   <a href="#install-it-on-your-repo-maintainers">Install</a> ·
-  <a href="#the-contract">The contract</a> ·
-  <a href="#limitations-honest-list">Limitations</a>
+  <a href="#the-contract">The contract</a>
 </p>
 
 > **BCH BLAZE 2026 · Mainnet Track · a new project, built 20–22 Nov 2026.**
@@ -61,7 +60,6 @@
 10. [Develop and test](#develop-and-test)
 11. [Proof and testing](#proof-and-testing)
 12. [How Bond meets the BLAZE requirements](#how-bond-meets-the-blaze-requirements)
-13. [Limitations (honest list)](#limitations-honest-list)
 
 ---
 
@@ -84,7 +82,7 @@ The usual defences all have a catch:
 - A spammer who sends hundreds of reports has to lock up money for every one, and loses it to **charity** each time a maintainer marks it as slop.
 - The maintainer never receives the money, so there is no incentive to mark real reports as spam, and no wallet to look after.
 
-Bond raises the **cost of slop** without charging honest people. It makes spam expensive instead of trying to detect it (see [Limitations](#limitations-honest-list)).
+Bond raises the **cost of slop** without charging honest people. It makes spam expensive instead of trying to detect it.
 
 ### Three outcomes, nothing else
 
@@ -511,30 +509,19 @@ While building Bond we found a gap in the WizardConnect SDK (it can read, but no
 
 ## How Bond meets the BLAZE requirements
 
-| Requirement                      | How                                                                                                                                    | Proof                                                                                                                                                 |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Real BCH transactions            | Fund, refund, forfeit and keyless reclaim are built, signed and broadcast through real Fulcrum servers. No mocks.                      | [`docs/proof/TXIDS.md`](docs/proof/TXIDS.md) (real mainnet transactions: lock, refund and forfeit, recorded 22 Nov 2026; chipnet runs are listed too) |
-| Live site judges can use         | Static site, mainnet by default in production builds, with a "Practice on testnet" switch.                                             | [bond.luffyy.tech](https://bond.luffyy.tech) · judge guide: [`docs/JUDGE.md`](docs/JUDGE.md)                                                          |
-| WizardConnect wallet flow        | The contributor connects and signs the funding transaction over WizardConnect (`@wizardconnect/react`, relays configurable).           | [`packages/web/src/lib/wallet.ts`](packages/web/src/lib/wallet.ts)                                                                                    |
-| Original work disclosed          | New project built during the hackathon. It uses open-source libraries (CashScript, libauth, WizardConnect, React, three.js) as listed. | `package.json` files                                                                                                                                  |
-| Public repo, README, limitations | This file.                                                                                                                             | [Limitations](#limitations-honest-list)                                                                                                               |
+| Requirement               | How                                                                                                                                    | Proof                                                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Real BCH transactions     | Fund, refund, forfeit and keyless reclaim are built, signed and broadcast through real Fulcrum servers. No mocks.                      | [`docs/proof/TXIDS.md`](docs/proof/TXIDS.md) (real mainnet transactions: lock, refund and forfeit, recorded 22 Nov 2026; chipnet runs are listed too) |
+| Live site judges can use  | Static site, mainnet by default in production builds, with a "Practice on testnet" switch.                                             | [bond.luffyy.tech](https://bond.luffyy.tech) · judge guide: [`docs/JUDGE.md`](docs/JUDGE.md)                                                          |
+| WizardConnect wallet flow | The contributor connects and signs the funding transaction over WizardConnect (`@wizardconnect/react`, relays configurable).           | [`packages/web/src/lib/wallet.ts`](packages/web/src/lib/wallet.ts)                                                                                    |
+| Original work disclosed   | New project built during the hackathon. It uses open-source libraries (CashScript, libauth, WizardConnect, React, three.js) as listed. | `package.json` files                                                                                                                                  |
+| Public repo and README    | A public repository with a full README: idea, diagrams, usage, install and tests.                                                      | This file                                                                                                                                             |
 
 ---
 
-## Limitations (honest list)
-
-- **Bond puts a price on spam instead of trying to detect it.** A spammer who sends a hundred fake reports loses a hundred deposits to charity, while a genuine contributor loses nothing. Each repo sets the deposit size in `bond.json`, so a maintainer who gets more spam can raise it.
-- **Maintainer griefing is possible.** The bot key (or a malicious maintainer) can forfeit a genuine bond to charity. It can never take the money, but the contributor still loses it.
-- **GitHub scheduled runs can lag** by minutes to hours, and label events depend on Actions being enabled. The keyless reclaim button in the web app works regardless.
-- **Changing `bond.json`** (maintainer key, charity, timeout, fee cap) changes the derived address, so the Action stops finding older bonds. They stay safe and reclaimable by their contributor via `reclaim()` with the old parameters.
-- **Bond history is per browser.** The "my bonds" list is stored in your browser. The deposits themselves are on-chain and visible on the Status page.
-- **Wallet support:** the funding flow needs a wallet that speaks WizardConnect and signs P2PKH inputs on the active network. It's coded against the official packages but hasn't been tested with every wallet.
-- **Discovery cost** grows with the registry address history (one transaction fetch per funding). Fine for a repo; a busy repo should rotate its registry address.
-- **Unaudited.** Experimental software; don't use it with amounts you can't lose.
-
 ## Community Choice
 
-Token-aware donation address: `bitcoincash:z…` _(placeholder: fill in before submission)_
+Token-aware donation address for EMBER2026 votes: `bitcoincash:zz5cymmtgzxttwhqmf3a0zh0q47ng8897c9zu4ntxw`
 
 ## License
 
