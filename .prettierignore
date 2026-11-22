@@ -1,0 +1,6 @@
+pnpm-lock.yaml
+packages/action/dist
+packages/web/dist
+packages/contracts/src/artifact
+docs/proof/demo-txids.json
+docs/submission/PRD.md

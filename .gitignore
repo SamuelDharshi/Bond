@@ -1,0 +1,19 @@
+node_modules/
+.env
+*.log
+packages/*/dist/
+!packages/action/dist/
+.vercel
+.faucet-captcha.png
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+coverage/
+*.tsbuildinfo
+.vscode/
+.claude/
+.turbo/
+packages/web/.vite/
+# development review screenshots (kept on disk, not published)
+docs/screenshots/

@@ -1,0 +1,43 @@
+{
+  "name": "bond",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "build": "pnpm -r --workspace-concurrency=1 run build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test:unit": "vitest run --config vitest.unit.config.ts",
+    "e2e": "vitest run --config vitest.e2e.config.ts",
+    "wallets:new": "tsx scripts/wallets-new.ts",
+    "faucet": "tsx scripts/faucet.ts",
+    "balance": "tsx scripts/balance.ts",
+    "demo:seed": "tsx scripts/demo-seed.ts",
+    "demo:repo": "tsx scripts/demo-repo.ts",
+    "check:network": "tsx scripts/check-network-strings.ts",
+    "demo:config": "tsx scripts/demo-config.ts",
+    "reclaim": "tsx scripts/reclaim.ts"
+  },
+  "devDependencies": {
+    "@actions/github": "^9.1.1",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.15.0",
+    "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.73.0",
+    "vitest": "^5.1.1"
+  },
+  "dependencies": {
+    "@bitauth/libauth": "3.1.0-next.8",
+    "@bond/contracts": "workspace:*",
+    "@bond/core": "workspace:*",
+    "cashscript": "0.14.0"
+  }
+}
